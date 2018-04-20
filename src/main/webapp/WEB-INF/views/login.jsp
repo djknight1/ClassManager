@@ -18,7 +18,7 @@
         var password = $("#password").val();
         $.ajax({
             type: 'POST',
-            url: "/login/check",
+            url: "/check",
             data: {
                 'username': username,
                 'password': password,
