@@ -4,12 +4,17 @@ import org.springframework.context.annotation.Bean;
 
 public class User {
     private long id;
-    private String username;
+    private long classId;
     private String password;
-    private String nickname;
-    private String mobilephone;
-    private String email;
+    private String name;
 
+    public long getClassId() {
+        return classId;
+    }
+
+    public void setClassId(long classId) {
+        this.classId = classId;
+    }
 
     public long getId() {
         return id;
@@ -17,14 +22,6 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -35,39 +32,11 @@ public class User {
         this.password = password;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getName() {
+        return name;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getMobilephone() {
-        return mobilephone;
-    }
-
-    public void setMobilephone(String mobilephone) {
-        this.mobilephone = mobilephone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", mobiephone='" + mobilephone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public void setName(String name) {
+        this.name = name;
     }
 }
