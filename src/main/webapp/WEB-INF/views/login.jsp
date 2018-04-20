@@ -5,7 +5,7 @@
 </head>
 <body>
 <form>
-    <input id="username"type="text" name="username">
+    <input id="id"type="text" name="id">
     <input id="password"type="password" name="password">
     <input id="submit-btn"type="submit" value="登陆">
 </form>
@@ -14,13 +14,13 @@
 <script>
     $(document).on("click", "#submit-btn", function (event) {
         event.preventDefault();
-        var username = $("#username").val();
+        var id = $("#id").val();
         var password = $("#password").val();
         $.ajax({
             type: 'POST',
             url: "/check",
             data: {
-                'username': username,
+                'id': id,
                 'password': password,
             },
             success: function (result) {
