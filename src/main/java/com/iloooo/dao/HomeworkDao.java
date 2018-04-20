@@ -3,10 +3,11 @@ package com.iloooo.dao;
 import com.iloooo.bean.Homework;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
-
+@Mapper
 public interface HomeworkDao {
     @Insert("insert into homework(Id, userId, typeId, taskId, path, time)values(#{Id}, #{userId}, #{typeId}, #{taskId}, #{path}, #{time})")
     boolean insertHomework(Homework homework);

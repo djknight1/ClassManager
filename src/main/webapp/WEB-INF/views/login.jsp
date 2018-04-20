@@ -27,7 +27,7 @@
                 var data = JSON.parse(JSON.stringify(result));
                 if (data.msg === true) {
                     alert("登陆成功");
-                    window.location.href = "/submit";
+                    window.location.href = "/update";
                 } else if (data.msg == false) {
                     alert("账号密码错误/账号不存在");
                 }

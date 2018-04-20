@@ -1,11 +1,22 @@
 package com.iloooo.bean;
 
+import java.sql.Timestamp;
+
 public class Task {
     private long Id;
     private long typeId;
     private String name;
     private String formatname;
+    private Timestamp endTime;
     private int flag;
+
+    public Timestamp getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Timestamp endTime) {
+        this.endTime = endTime;
+    }
 
     public long getId() {
         return Id;

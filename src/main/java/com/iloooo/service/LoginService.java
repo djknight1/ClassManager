@@ -5,7 +5,7 @@ import com.iloooo.bean.User;
 
 import java.util.List;
 
-public interface UserManagerService {
+public interface LoginService {
 
     User getUserById(long id);
 

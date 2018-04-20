@@ -2,10 +2,11 @@ package com.iloooo.dao;
 
 import com.iloooo.bean.Task;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
-
+@Mapper
 public interface TaskDao {
     @Insert("insert into task(Id, typeId, name, formatname, flag)values(#{Id}, #{typeId}, #{name}, #{formatname}, #{flag})")
     boolean insertTask();

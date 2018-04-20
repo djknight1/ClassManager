@@ -3,18 +3,18 @@ package com.iloooo.service.impl;
 
 import com.iloooo.bean.User;
 import com.iloooo.dao.UserDao;
-import com.iloooo.service.UserManagerService;
+import com.iloooo.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("userServiceImpl")
-public class UserManagerServiceImpl implements UserManagerService {
+public class LoginServiceImpl implements LoginService {
     private final UserDao userDao;
 
     @Autowired
-    public UserManagerServiceImpl(UserDao userDao) {
+    public LoginServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
 
@@ -49,14 +49,11 @@ public class UserManagerServiceImpl implements UserManagerService {
         } else {
             ret = false;
         }
-
-
         return ret;
     }
 
     public List<User> selectByClassId(int classId){
         return userDao.selectByClassId(classId);
     }
-
 
 }
