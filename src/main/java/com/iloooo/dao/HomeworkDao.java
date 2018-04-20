@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 @Mapper
 public interface HomeworkDao {
-    @Insert("insert into homework(Id, userId, typeId, taskId, path, time)values(#{Id}, #{userId}, #{typeId}, #{taskId}, #{path}, #{time})")
+    @Insert("insert into homework(Id, userId, typeId, taskId, name, path, time)values(#{Id}, #{userId}, #{typeId}, #{taskId}, #{name}, #{path}, #{time})")
     boolean insertHomework(Homework homework);
     @Delete("delete from homework where Id = #{Id}")
     boolean deleteById(int Id);

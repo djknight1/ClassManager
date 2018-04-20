@@ -7,8 +7,32 @@ public class Homework {
     private long userId;
     private long typeId;
     private long taskId;
+    private String name;
     private String path;
     private Timestamp datetime;
+
+    @Override
+    public String toString() {
+        return "Homework{" +
+                "Id=" + Id +
+                ", userId=" + userId +
+                ", typeId=" + typeId +
+                ", taskId=" + taskId +
+                ", name='" + name + '\'' +
+                ", path='" + path + '\'' +
+                ", datetime=" + datetime +
+                '}';
+    }
+
+    public Homework(long id, long userId, long typeId, long taskId, String name, String path, Timestamp datetime) {
+        Id = id;
+        this.userId = userId;
+        this.typeId = typeId;
+        this.taskId = taskId;
+        this.name = name;
+        this.path = path;
+        this.datetime = datetime;
+    }
 
     public long getId() {
         return Id;
@@ -42,6 +66,14 @@ public class Homework {
         this.taskId = taskId;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getPath() {
         return path;
     }
@@ -55,27 +87,6 @@ public class Homework {
     }
 
     public void setDatetime(Timestamp datetime) {
-        this.datetime = datetime;
-    }
-
-    @Override
-    public String toString() {
-        return "HomeworkDao{" +
-                "Id=" + Id +
-                ", userId=" + userId +
-                ", typeId=" + typeId +
-                ", taskId=" + taskId +
-                ", path='" + path + '\'' +
-                ", datetime=" + datetime +
-                '}';
-    }
-
-    public Homework(long id, long userId, long typeId, long taskId, String path, Timestamp datetime) {
-        Id = id;
-        this.userId = userId;
-        this.typeId = typeId;
-        this.taskId = taskId;
-        this.path = path;
         this.datetime = datetime;
     }
 

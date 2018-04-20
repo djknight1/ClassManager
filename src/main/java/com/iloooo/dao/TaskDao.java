@@ -8,8 +8,12 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 @Mapper
 public interface TaskDao {
-    @Insert("insert into task(Id, typeId, name, formatname, flag)values(#{Id}, #{typeId}, #{name}, #{formatname}, #{flag})")
-    boolean insertTask();
-    @Select("select * from task where typeId = #{typeId}")
-    List<Task> task(int typeId);
+    @Insert("insert into task(Id, typeId, name, formatName,endTime, flag)values(#{Id}, #{typeId}, #{name}, #{formatName}, #{endTime}, #{flag})")
+    boolean insertTask(Task task);
+
+    @Select("select * from task where id = #{id}")
+    Task selectByTaskId(long id);
+
+    @Select("select * from task where flag = 1")
+    List<Task> selectTaskNow();
 }

@@ -6,7 +6,7 @@ public class Task {
     private long Id;
     private long typeId;
     private String name;
-    private String formatname;
+    private String formatName;
     private Timestamp endTime;
     private int flag;
 
@@ -42,12 +42,12 @@ public class Task {
         this.name = name;
     }
 
-    public String getFormatname() {
-        return formatname;
+    public String getFormatName() {
+        return formatName;
     }
 
-    public void setFormatname(String formatname) {
-        this.formatname = formatname;
+    public void setFormatName(String formatname) {
+        this.formatName = formatname;
     }
 
     public int getFlag() {
@@ -64,7 +64,7 @@ public class Task {
                 "Id=" + Id +
                 ", typeId=" + typeId +
                 ", name='" + name + '\'' +
-                ", formatname='" + formatname + '\'' +
+                ", formatname='" + formatName + '\'' +
                 ", flag=" + flag +
                 '}';
     }
@@ -73,7 +73,7 @@ public class Task {
         Id = id;
         this.typeId = typeId;
         this.name = name;
-        this.formatname = formatname;
+        this.formatName = formatname;
         this.flag = flag;
     }
 
