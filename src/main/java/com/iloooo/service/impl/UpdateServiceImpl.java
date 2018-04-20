@@ -1,9 +1,6 @@
 package com.iloooo.service.impl;
 
-import com.iloooo.dao.ClassDao;
-import com.iloooo.dao.HomeworkDao;
-import com.iloooo.dao.TaskDao;
-import com.iloooo.dao.UserDao;
+import com.iloooo.dao.*;
 import com.iloooo.service.UpdateService;
 import org.springframework.beans.factory.annotation.Autowired;
 
