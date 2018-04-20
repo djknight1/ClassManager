@@ -7,6 +7,8 @@ import com.iloooo.service.UserManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("userServiceImpl")
 public class UserManagerServiceImpl implements UserManagerService {
     private final UserDao userDao;
@@ -50,6 +52,10 @@ public class UserManagerServiceImpl implements UserManagerService {
 
 
         return ret;
+    }
+
+    public List<User> selectByClassId(int classId){
+        return userDao.selectByClassId(classId);
     }
 
 

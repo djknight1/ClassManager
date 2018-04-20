@@ -6,11 +6,16 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface UserDao {
 
     @Select("select * from user where username=#{id}")
     User selectById(@Param("id") long id);
+
+    @Select("select * from user where classId = #{classId}")
+    List<User> selectByClassId(int classId);
 
     @Insert("insert into user(id,username,password,nickname,mobilephone,email) values(#{id},#{username},#{password},#{nickname},#{mobilephone},#{email})")
     boolean insertUser(User user);
