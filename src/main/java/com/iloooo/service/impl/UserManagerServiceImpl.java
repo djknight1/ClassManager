@@ -15,10 +15,6 @@ public class UserManagerServiceImpl implements UserManagerService {
     public UserManagerServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
-    @Override
-    public User getUserByUsername(String username) {
-        return userDao.selectByUsername(username);
-    }
 
     @Override
     public User getUserById(long id) {
@@ -28,7 +24,7 @@ public class UserManagerServiceImpl implements UserManagerService {
     @Override
     public boolean createUser(User user) {
         boolean ret;
-        if (isUsernameEmpty(user.getUsername())) {
+        if (isIdEmpty(user.getId())) {
             userDao.insertUser(user);
             ret = true;
         } else {
@@ -38,13 +34,13 @@ public class UserManagerServiceImpl implements UserManagerService {
     }
 
     @Override
-    public boolean isUsernameEmpty(String username) {
-        return null == userDao.selectByUsername(username);
+    public boolean isIdEmpty(long id) {
+        return null == userDao.selectById(id);
     }
 
     @Override
-    public boolean isCorrectUser(String username, String password) {
-        User user = userDao.selectByUsername(username);
+    public boolean isCorrectUser(long id, String password) {
+        User user = userDao.selectById(id);
         boolean ret = false;
         if (null != user && user.getPassword().equals(password)) {
             ret = true;

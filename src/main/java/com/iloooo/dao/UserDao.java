@@ -9,9 +9,6 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserDao {
 
-    @Select("select * from user where username=#{username}")
-    User selectByUsername(@Param("username") String username);
-
     @Select("select * from user where username=#{id}")
     User selectById(@Param("id") long id);
 

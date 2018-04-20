@@ -35,9 +35,9 @@ public class LoginController {
 
     @RequestMapping(path = "/register/username", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Boolean> username(@Param("username") String username) {
+    public Map<String, Boolean> username(@Param("id") long id) {
         Map<String, Boolean> result = new HashMap<>();
-        if (userManagerService.isUsernameEmpty(username)) {
+        if (userManagerService.isUsernameEmpty(id)) {
             result.put("msg", true);
         } else {
             result.put("msg", false);
@@ -57,11 +57,8 @@ public class LoginController {
         Map<String, Object> result = new HashMap<>();
         HttpSession session = request.getSession();
         User user = new User();
-        user.setUsername(request.getParameter("username"));
         user.setPassword(request.getParameter("password"));
-        user.setNickname(request.getParameter("nickname"));
-        user.setEmail(request.getParameter("email"));
-        user.setMobilephone(request.getParameter("mobilephone"));
+        user.setName(request.getParameter("nickname"));
         userManagerService.createUser(user);
         if (null == session.getAttribute("loginUser")) {
             session.setAttribute("loginUser", user);
