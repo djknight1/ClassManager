@@ -1,0 +1,207 @@
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+}
+body {
+    font-size: 12px;
+    margin-right:0;
+    padding: 0;
+}
+
+
+.pull-left{
+    float: left!important;
+}
+.pull-right{
+    float: right;
+}
+
+
+.view-body {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    top:0;
+    right:0;
+    background-color: #f5f5f6;
+    z-index: 100;
+    min-height:1080px;
+}
+.main-right-bar{
+    position: absolute;
+    left: 210px;
+    top:0;
+    bottom: 0px;
+    right:0px;
+    width: auto;
+    background-color: #f5f5f6;
+}
+
+.main-right-bar .no-use-space{
+    width: auto;
+    height:70px;
+}
+
+.user-info-container{
+    display: flex;
+    width: 100%;
+    margin-bottom: 16px;
+}
+.user-section-wrap {
+    background-color: #fff;
+    flex-basis: 0;
+    flex-grow: 1;
+    margin-right: 15px;
+}
+.main-right-bar  .user-section-wrap .info-header{
+    width: 60px;
+    height: 100%;
+    float: left;
+    background: #f9fafc;
+}
+.main-right-bar  .user-section-wrap .info-header .section-icon {
+    width:50px;
+    height: 50px;
+    line-height: 50px;
+    margin: 45px auto;
+    color: #546478;
+    font-size: 24px;
+    border-radius: 50%;
+    background-image: url("https://static.hdslb.com/images/member/noface.gif");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.main-right-bar  .user-section-wrap .section-content-warp {
+    width: 100%;
+    padding-left: 60px;
+    height: 100%;
+}
+.main-right-bar  .user-section-wrap.fixed-section-wrap {
+    position: absolute;
+    right: 15px;
+    top:0;
+}
+.main-right-bar  .user-section-wrap .section-content-warp .section-content {
+    padding: 25px 0px 20px 20px;
+}
+.main-right-bar  .user-section-wrap .section-content-warp .section-content span{
+    font-size: 22px;
+}
+.main-right-bar  .user-section-wrap .section-content-warp .section-content .user-hi {
+    color: #999;
+}
+.main-right-bar  .user-section-wrap .section-content-warp .section-content .user-id {
+    color: #0099cc;
+    margin-left:10px;
+}
+.main-right-bar .section-content-warp .user-email{
+    font-size: 14px;
+    color: #666;
+}
+.main-right-bar .service-container {
+    margin:0 30px 0 15px;
+    background: #fff;
+}
+.main-right-bar .service-container .service-section{
+    padding:15px 16px;
+    width: auto;
+
+}
+.main-right-bar .service-container .service-section .section-head{
+    padding:10px 0;
+    border-bottom: 1px solid #eaedf1;
+}
+.main-right-bar .service-container .service-section .strong-title{
+    font-weight: bold;
+    margin-right: 3px;
+}
+.main-right-bar .service-container .service-section .service-control-list{
+    margin-right: 5px;
+}
+
+.service-container .section-body {
+    display: flex;
+    flex-flow: column wrap;
+}
+.section-body .select-container{
+    display: flex;
+}
+.section-body .select-container *{
+    flex-basis: 0;
+    flex-grow: 2;
+}
+.section-body .select-container .layui-btn{
+    flex-basis: 0;
+    flex-grow: 0.5;
+    margin-left:15px;
+}
+.service-container .section-body #download-all{
+    align-self: flex-end;
+}
+
+table{
+    width: 100%;
+    background: #FFF;
+    font-size: 12px;
+    border-top: 1px solid #E1E6EB;
+    margin-top: 8px;
+    border: 1px solid #E1E6EB;
+}
+table .title-column-1{
+    width:10%;
+}
+table .title-column-2{
+    width:20%;
+}
+table .title-column-3{
+    width:30%;
+}
+table .title-column-4{
+    width:40%;
+}
+table thead{
+    background-color: #f5f6fa;
+}
+table thead tr th{
+    padding: 8px 8px;
+    font-weight: normal;
+    color: #999;
+    border-bottom: 1px solid #E1E6EB;
+    background-color: #F5F6FA;
+}
+table tbody tr td{
+    padding: 12px 8px;
+    border-top: 0px;
+    border-bottom: 1px solid #E1E6EB;
+    vertical-align: middle;
+}
+table tbody tr td button {
+    color: #94b9dc;
+    width: 100px !important;
+    display: block!important;
+    float: right;
+}
+
+#download-all{
+    margin-top: 10px;
+}
+
+@media (max-width: 980px) {
+    .user-info-container .user-section-wrap:nth-child(3){
+        display: none;
+    }
+    .user-info-container .user-section-wrap{
+        width:46%;
+    }
+
+}
+@media (max-width: 850px){
+    .topbar-search{
+        display: none;
+    }
+    .admin-info .list-item:nth-child(1),
+    .admin-info .list-item:nth-child(5),
+    .admin-info .list-item:nth-child(3){
+        display: none;
+    }
+}

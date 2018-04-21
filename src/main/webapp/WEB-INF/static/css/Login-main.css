@@ -1,0 +1,131 @@
+.clearfix:after{content:'\0020';
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+}
+.clearfix{  *zoom:1}
+
+@font-face {
+    font-family: 'iconfont';  /* project id 582312 */
+    src: url('//at.alicdn.com/t/font_582312_gqoqu5f2oqv0lik9.eot');
+    src: url('//at.alicdn.com/t/font_582312_gqoqu5f2oqv0lik9.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_582312_gqoqu5f2oqv0lik9.woff') format('woff'),
+    url('//at.alicdn.com/t/font_582312_gqoqu5f2oqv0lik9.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_582312_gqoqu5f2oqv0lik9.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:24px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.main-body{
+    background-image: url("https://static.zhihu.com/heifetz/bg.8ca8122d44fc9a0f7b04.png");
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+#login-container{
+    margin: 80px auto;
+     background-color: #fff;
+    background-size: cover;
+    width: 400px;
+    height: 504PX;
+    overflow: auto;
+    padding-right: 15px;
+}
+#login-container .pic-container {
+    padding-top: 30px;
+    padding-bottom:15px;
+    text-align: center;
+}
+.pic-container img {
+    width: 150px;
+}
+#login-container .pic-container .pic-title{
+    margin-top: 15px;
+    color: #0084ff;
+    font-size: 22px;
+}
+.layui-tab {
+    width: 100%;
+    border-color: #e6e6e6;
+    border-radius: 2px 2px 0 0;
+}
+.layui-tab-title .layui-this {
+    color: #0084ff;
+}
+.layui-tab .layui-tab-content .login-item{
+    color: #71777d;
+    background-color: transparent!important;
+    outline: none;
+    margin-top: 4px;
+    border: none;
+    border-bottom:1px solid #eee;
+}
+.layui-tab .layui-tab-content .password-input-container{
+    position: relative;
+}
+.layui-tab .layui-tab-content a.change-visiable {
+    position: absolute;
+    right: 10px;
+    top:10px;
+}
+.main-body #login-container .layui-tab .login-option{
+    margin-top:15px;
+    width: 100%;
+}
+#login-container .layui-tab .login-option .button-control{
+    height: auto;
+    display: inline-block;
+    font-size: 14px;
+    color: #8590a6;
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+    line-height: inherit;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+#login-container .layui-tab .login-option #forget-password{
+    float: right;
+}
+#login-container .layui-tab .login-option #admin{
+    float: left;
+    margin-left:10px;
+}
+#login-container .layui-tab .login-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+#login-container .layui-tab .login-button-container .layui-btn{
+    width: 80%;
+}
+.main-body .footer-main{
+    margin-bottom:20px;
+}
+.main-body .footer-main,
+.main-body .footer-main .footer-line a{
+    font-size: 12px;
+    line-height: 21px;
+    text-align: center;
+    color: #8590a6;
+}
+.user-name-input-container{
+    position: relative;
+}
+.user-name-input-container #username-input-error {
+    position: absolute;
+    bottom: 15px;
+    right:0;
+}
+
+#username-input-error{
+    font-size: 10px;
+    color: #8590a6;
+}
