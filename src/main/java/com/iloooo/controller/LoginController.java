@@ -22,7 +22,7 @@ public class LoginController {
         if (null==session.getAttribute("loginUser")){
             return "login";
         } else{
-            return "redirect:/update";
+            return "redirect:/upload";
         }
     }
 

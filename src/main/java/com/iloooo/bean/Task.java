@@ -9,6 +9,15 @@ public class Task {
     private String formatName;
     private Timestamp endTime;
     private int flag;
+    private String TaskPath;
+
+    public String getTaskPath() {
+        return TaskPath;
+    }
+
+    public void setTaskPath(String taskPath) {
+        TaskPath = taskPath;
+    }
 
     public Timestamp getEndTime() {
         return endTime;
