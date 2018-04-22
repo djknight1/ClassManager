@@ -18,8 +18,22 @@ import java.util.Map;
 public class LoginController {
 
     @RequestMapping("/")
-    public String login() {
-        return "login";
+    public String login(HttpSession session) {
+        if (null==session.getAttribute("loginUser")){
+            return "login";
+        } else{
+            return "redirect:/update";
+        }
+    }
+
+    @RequestMapping("adminLogin")
+    public String adminLogin(HttpSession session) {
+        if (null == session.getAttribute("adminUser")) {
+            return "login-admin";
+        } else {
+            return "redirect:/admin";
+        }
+
     }
 
 

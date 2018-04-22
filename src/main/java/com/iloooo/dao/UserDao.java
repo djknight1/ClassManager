@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface UserDao {
 
-    @Select("select * from user where username=#{id}")
+    @Select("select * from user where id=#{id}")
     User selectById(@Param("id") long id);
 
     @Select("select * from user where classId = #{classId}")

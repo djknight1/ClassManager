@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>denglu</title>
+    <title>登陆 - ZUST Computer Science 16</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Login-main.css">
 </head>
@@ -81,6 +81,9 @@
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
 
 <script>
+    $(document).on("click", "#admin", function (event) {
+        window.location.href = "/admin"
+    });
     $(document).on("click", "#submit-btn", function (event) {
         event.preventDefault();
         var id = $("#id").val();
@@ -96,7 +99,8 @@
                 var data = JSON.parse(JSON.stringify(result));
                 if (data.msg === true) {
                     alert("登陆成功");
-                } else if (data.msg == false) {
+                    window.location.href = "/update";
+                } else if (data.msg === false) {
                     alert("账号密码错误/账号不存在");
                 }
 

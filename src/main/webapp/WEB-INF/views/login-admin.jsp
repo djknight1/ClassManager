@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>管理 - ZUST Computer Science 16</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Login-main.css">
 
@@ -21,12 +21,12 @@
             <ul class="layui-tab-title">
                 <li class="layui-this">登陆</li>
             </ul>
-            <form class="layui-tab-content" action="/login/check" method="post">
+            <form class="layui-tab-content">
                 <div class="layui-tab-item layui-show">
                     <div class="user-name-input-container">
                         <span  id="username-input-error" style="display: none;">账号格式错误！</span>
-                        <input data-rule='pattern:"^[0-9]*$"|max_length:10|min_length:6' class="layui-input login-item login-name" id="username" type="text" name="username" required
-                               lay-verify="required" placeholder="学号" autocomplete="off">
+                        <input  class="layui-input login-item login-name" id="username" type="text" name="username" required
+                               lay-verify="required" placeholder="用户名" autocomplete="off">
                     </div>
                     <div class="password-input-container">
                         <input class="layui-input login-item login-password" id="password" type="password"
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="login-button-container">
-                    <button class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal" type="submit">登陆</button>
+                    <button id="submit-btn" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal" type="submit">登陆</button>
                 </div>
             </form>
 
@@ -81,6 +81,35 @@
 <script src="${pageContext.request.contextPath}/js/validator.js"></script>
 <script src="${pageContext.request.contextPath}/js/input.js"></script>
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
+<script>
 
+    $(document).on("click", "#submit-btn", function (event) {
+        event.preventDefault();
+        var username = $("#username").val();
+        var password = $("#password").val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/adminCheck",
+            data: {
+                'username': username,
+                'password': password,
+            },
+            success: function (result) {
+                var data = JSON.parse(JSON.stringify(result));
+                if (data.msg === true) {
+                    alert("登陆成功");
+                    window.location.href = "/admin";
+                } else if (data.msg === false) {
+                    alert("账号密码错误/账号不存在");
+                }
+
+            },//JSON.stringify(data)
+            error: function () {
+                alert("error");
+            }
+        });
+    });
+
+</script>
 </body>
 </html>
