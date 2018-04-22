@@ -23,13 +23,14 @@ public class AjaxController {
     private UpdateServiceImpl updateService;
     private AdminServiceImpl adminService;
 
+    @Autowired
     public AjaxController(LoginServiceImpl userManagerService, UpdateServiceImpl updateService, AdminServiceImpl adminService) {
         this.userManagerService = userManagerService;
         this.updateService = updateService;
         this.adminService = adminService;
     }
 
-    @Autowired
+
 
     //用户登陆
     @RequestMapping(path = "/check", method = RequestMethod.POST)
