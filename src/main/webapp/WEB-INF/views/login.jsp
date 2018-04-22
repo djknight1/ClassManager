@@ -22,7 +22,7 @@
                 <div class="layui-tab-item layui-show">
                     <div class="user-name-input-container">
                         <span  id="username-input-error" style="display: none;">账号格式错误！</span>
-                        <input data-rule='pattern:"^[0-9]*$"|max_length:10|min_length:6' class="layui-input login-item login-name" id="username" type="text" name="username" required
+                        <input data-rule='pattern:"^[0-9]*$"|max_length:10|min_length:6' class="layui-input login-item login-name" id="id" type="text" name="id" required
                                lay-verify="required" placeholder="学号" autocomplete="off">
                     </div>
                     <div class="password-input-container">
@@ -83,7 +83,7 @@
 <script>
     $(document).on("click", "#submit-btn", function (event) {
         event.preventDefault();
-        var id = $("#username").val();
+        var id = $("#id").val();
         var password = $("#password").val();
         $.ajax({
             type: 'POST',
