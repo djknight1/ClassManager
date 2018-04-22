@@ -17,6 +17,6 @@ public interface UserDao {
     @Select("select * from user where classId = #{classId}")
     List<User> selectByClassId(int classId);
 
-    @Insert("insert into user(id,username,password,nickname,mobilephone,email) values(#{id},#{username},#{password},#{nickname},#{mobilephone},#{email})")
+    @Insert("insert into user(id,classId,password,name) values(#{id},#{classId},#{password},#{name})")
     boolean insertUser(User user);
 }
