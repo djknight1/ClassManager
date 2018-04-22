@@ -29,8 +29,6 @@ public class AjaxController {
         this.adminService = adminService;
     }
 
-    /*@Autowired*/
-
     //用户登陆
     @RequestMapping(path = "/check", method = RequestMethod.POST)
     @ResponseBody
