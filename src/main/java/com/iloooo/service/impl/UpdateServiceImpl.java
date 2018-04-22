@@ -50,7 +50,6 @@ public class UpdateServiceImpl implements UpdateService {
     public boolean updateHomework(long userId, long typeId, long taskId, String username) {
         Homework homework = new Homework();
         User user = userDao.selectById(userId);
-        Type type = typeDao.selectTypeById(typeId);
         Task task = taskDao.selectByTaskId(taskId);
         boolean ret = false;
         String homeworkName = user.getId() + " " + user.getName() + "_" + task.getFormatName() + UpdateFileUtils.getFileSuffix(username);
