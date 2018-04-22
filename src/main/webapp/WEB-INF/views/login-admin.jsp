@@ -12,7 +12,7 @@
 <div class="main-body">
     <div id="login-container">
         <div class="pic-container">
-            <img src="Logo.jpg">
+            <img src="logo.png">
             <div class="pic-title">
                 管理员登陆
             </div>

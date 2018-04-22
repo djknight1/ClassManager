@@ -9,7 +9,7 @@
 <div class="main-body">
     <div id="login-container">
         <div class="pic-container">
-            <img src="${pageContext.request.contextPath}/img/Logo.jpg">
+            <img src="${pageContext.request.contextPath}/img/logo.png">
             <div class="pic-title">
                 计算机科学与技术
             </div>
