@@ -101,15 +101,10 @@
     <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
     <script>
         //JavaScript代码区域
-        layui.use('form', function() {
-            var form = layui.form;
-        });
-
-
-
-
-
-        /*        layui.use('element', function(){
+            layui.use('form', function() {
+                var form = layui.form;
+            });
+        /* layui.use('element', function(){
                         layui.use('table', function(){
                             /!*TODO:一定要把这个做的好看点！！！*!/
                            /!* var table = layui.table;
@@ -129,7 +124,7 @@
                         });
                 });*/
     </script>
-    <script src="admin.js"></script>
+    <script src="${pageContext.request.contextPath}/js/admin.js"></script>
 </body>
 </html>
 

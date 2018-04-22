@@ -2,127 +2,113 @@
 <html>
 <head>
     <title>denglu</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}//layui/css/layui.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Login-main.css">
 </head>
 <body>
-
-<div class="view-container">
-    <div class="view-body">
-        <div class="layui-side layui-bg-black">
-            <div class="layui-side-scroll">
-                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                    <li class="layui-nav-item layui-nav-itemed">
-                        <a class="" href="javascript:;">所有功能</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">批量下载</a></dd>
-                            <dd><a href="">浙江科技学院</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">解决方案</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">列表一</a></dd>
-                            <dd><a href="javascript:;">列表二</a></dd>
-                            <dd><a href="">超链接</a></dd>
-                        </dl>
-                    </li>
-                </ul>
+<div class="main-body">
+    <div id="login-container">
+        <div class="pic-container">
+            <img src="${pageContext.request.contextPath}/img/Logo.jpg">
+            <div class="pic-title">
+                计算机科学与技术
             </div>
         </div>
-
-        <div class="main-right-bar">
-            <div class="no-use-space"></div>
-
-            <div class="service-container">
-                <div class="service-section">
-                    <div class="section-body">
-                        <div class="select-container layui-form">
-                            <select name="class" class="select-input">
-                                <option value="0" >请选择班级</option>
-                                <option value="161">计算机1班</option>
-                                <option value="162">计算机2班</option>
-                            </select>
-
-                            <select name="subject" class="select-input">
-                                <option value="0" >请选择学科</option>
-                                <option value="c++">c++</option>
-                                <option value="java">java</option>
-                            </select>
-
-                            <select name="city" class="select-input">
-                                <option value="0" >请选择上传时间</option>
-                                <option value="c++">c++</option>
-                                <option value="java">java</option>
-                            </select>
-                            <button class="layui-btn">查询</button>
-                        </div>
-
-
-                        <table>
-                            <thead>
-                            <tr>
-                                <th class="title-column-3">学号</th>
-                                <th class="title-column-4">姓名</th>
-                                <th class="title-column-1">上传时间</th>
-                                <th class="title-column-2"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="title-column-3">XXXX</td>
-                                <td class="title-column-4">时间</td>
-                                <td class="title-column-1">类型</td>
-                                <td><button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal title-column-2">点击下载</button></td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                        <div id="download-all">
-                            <button class="layui-btn layui-btn-radius">批量下载</button>
-                        </div>
+        <div class="layui-tab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">登陆</li>
+            </ul>
+            <form class="layui-tab-content" >
+                <div class="layui-tab-item layui-show">
+                    <div class="user-name-input-container">
+                        <span  id="username-input-error" style="display: none;">账号格式错误！</span>
+                        <input data-rule='pattern:"^[0-9]*$"|max_length:10|min_length:6' class="layui-input login-item login-name" id="username" type="text" name="username" required
+                               lay-verify="required" placeholder="学号" autocomplete="off">
+                    </div>
+                    <div class="password-input-container">
+                        <input class="layui-input login-item login-password" id="password" type="password"
+                               name="password" required lay-verify="required" placeholder="密码" autocomplete="off">
+                        <a class="change-visiable " href="javascript:void(0);">
+                            <i class="iconfont visiable-icon">&#xe6a5;</i>
+                            <i class="iconfont notvisiable-icon" style="display: none;">&#xe6a2;</i>
+                        </a>
+                    </div>
+                    <div class="login-option clearfix">
+                        <input type="button" class="button-control" id="admin" value="管理员">
+                        <input type="button" class="button-control" id="forget-password" value="修改密码?">
                     </div>
                 </div>
+                <div class="login-button-container">
+                    <button id="submit-btn" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal" type="submit">登陆</button>
+                </div>
+            </form>
 
-            </div>
         </div>
     </div>
-
+    <footer class="footer-main">
+        <div class="footer-line footer-line1">
+            <a href="#">XXXX</a>
+            <a href="#">XXXX</a>
+            <a href="#">XXXX</a>
+            <a href="#">XXXX</a>
+            <a href="#">XXXX</a>
+        </div>
+        <div class="footer-line footer-line2">
+            <a href="#">XXXX</a>
+            <a href="#">XXXX</a>
+            <a href="#">XXXXX</a>
+            <a href="#">XXXX</a>
+            <a href="#">XXXX</a>
+        </div>
+        <div class="footer-line footer-line3">
+            <a href="#">XXXX</a>
+            <a href="#">XXXX</a>
+            <a href="#">XXXX</a>
+            <a href="#">XXXX</a>
+            <a href="#">XXXXXXXXXXXXX</a>
+        </div>
+    </footer>
 </div>
+
+
+
 <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
 <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
+<script src="${pageContext.request.contextPath}/js/login-layui.js"></script>
+<script src="${pageContext.request.contextPath}/js/login-main.js"></script>
+<script src="${pageContext.request.contextPath}/js/validator.js"></script>
+<script src="${pageContext.request.contextPath}/js/input.js"></script>
+<script src="${pageContext.request.contextPath}/js/main.js"></script>
+
 <script>
-    //JavaScript代码区域
-    layui.use('form', function() {
-        var form = layui.form;
+    $(document).on("click", "#submit-btn", function (event) {
+        event.preventDefault();
+        var id = $("#username").val();
+        var password = $("#password").val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/check",
+            data: {
+                'id': id,
+                'password': password,
+            },
+            success: function (result) {
+                var data = JSON.parse(JSON.stringify(result));
+                if (data.msg === true) {
+                    alert("登陆成功");
+                } else if (data.msg == false) {
+                    alert("账号密码错误/账号不存在");
+                }
+
+            },//JSON.stringify(data)
+            error: function () {
+                alert("error");
+            }
+        });
     });
 
-
-
-
-
-    /*        layui.use('element', function(){
-                    layui.use('table', function(){
-                        /!*TODO:一定要把这个做的好看点！！！*!/
-                       /!* var table = layui.table;
-                        //第一个实例
-                        table.render({
-                            elem: '#demo',
-                            height: 315,
-                            url: '', //数据接口
-                            page: true, //开启分页
-                            cols: [[ //表头
-                                {field: 'id', title: '学号', width:"25%", sort: true, fixed: 'left'},
-                                {field: 'name', title: '姓名', width:"25%", fixed: 'left'},
-                                {field: 'file', title: '上传文件名', width:"25%", fixed: 'left'},
-                                {field: 'time', title: '上传时间', sort: true,width:"25%",  fixed: 'left'},
-                            ]],
-                        });*!/
-                    });
-            });*/
 </script>
-<script src="${pageContext.request.contextPath}/js/admin.js"></script>
+
 </body>
 
 </html>
