@@ -14,7 +14,7 @@ public  class FileUtils {
             String fullPath = serverPath + path;
             System.out.println(fullPath);
             for (int i = fullPath.length()-1; i >=0 ; i--) {
-                if(fullPath.charAt(i)=='\\'){
+                if(fullPath.charAt(i)=='/'){
                     flag = i;
                     break;
                 }

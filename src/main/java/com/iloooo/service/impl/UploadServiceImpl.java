@@ -58,7 +58,7 @@ public class UploadServiceImpl implements UploadService {
         String filename = file.getOriginalFilename();
         boolean ret = false;
         String homeworkName = user.getId() + " " + user.getName() + "_" + task.getFormatName() + FileUtils.getFileSuffix(filename);
-        String path = FileUtils.FILE_PATH_PREFIX + task.getTaskPath() + "\\" + homeworkName;
+        String path = FileUtils.FILE_PATH_PREFIX + task.getTaskPath() + "/" + homeworkName;
         ///WEB-INF/file/2222/1160299021sfdsfsd.doc
         ///....Do write file work
         boolean updateFlag = FileUtils.update(file, path, serverPath);
