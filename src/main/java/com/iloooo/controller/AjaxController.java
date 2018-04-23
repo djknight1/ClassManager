@@ -93,7 +93,8 @@ public class AjaxController {
 
     @RequestMapping("/test")
     public Map<String, Object> test(MultipartFile file) {
-
+//  /ajax/test    HtttpServletRequest request
+//      System.out.println(((File)request.getAttribute("file")).getName());
         System.out.println(file.getName());
 
         Map map = new HashMap<String, Object>();
