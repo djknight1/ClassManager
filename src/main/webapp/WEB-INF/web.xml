@@ -4,15 +4,15 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
     http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
-  <!-- 错误页面 -->
-  <!--<error-page>-->
-  <!--<error-code>404</error-code>-->
-  <!--<location>/WEB-INF/views/error/404.jsp</location>-->
-  <!--</error-page>-->
-  <!--<error-page>-->
-  <!--<error-code>500</error-code>-->
-  <!--<location>/WEB-INF/views/error/500.jsp</location>-->
-  <!--</error-page>-->
+
+  <error-page>
+  <error-code>404</error-code>
+  <location>/WEB-INF/views/login.jsp</location>
+  </error-page>
+  <error-page>
+  <error-code>500</error-code>
+  <location>/WEB-INF/views/login.jsp</location>
+  </error-page>
 
   <!-- 配置 Spring -->
   <context-param>

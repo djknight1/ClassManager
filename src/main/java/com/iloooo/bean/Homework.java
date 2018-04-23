@@ -9,30 +9,7 @@ public class Homework {
     private long taskId;
     private String name;
     private String path;
-    private Timestamp datetime;
-
-    @Override
-    public String toString() {
-        return "Homework{" +
-                "Id=" + Id +
-                ", userId=" + userId +
-                ", typeId=" + typeId +
-                ", taskId=" + taskId +
-                ", name='" + name + '\'' +
-                ", path='" + path + '\'' +
-                ", datetime=" + datetime +
-                '}';
-    }
-
-    public Homework(long id, long userId, long typeId, long taskId, String name, String path, Timestamp datetime) {
-        Id = id;
-        this.userId = userId;
-        this.typeId = typeId;
-        this.taskId = taskId;
-        this.name = name;
-        this.path = path;
-        this.datetime = datetime;
-    }
+    private Timestamp time;
 
     public long getId() {
         return Id;
@@ -82,12 +59,12 @@ public class Homework {
         this.path = path;
     }
 
-    public Timestamp getDatetime() {
-        return datetime;
+    public Timestamp getTime() {
+        return time;
     }
 
-    public void setDatetime(Timestamp datetime) {
-        this.datetime = datetime;
+    public void setTime(Timestamp time) {
+        this.time = time;
     }
 
     public Homework() {

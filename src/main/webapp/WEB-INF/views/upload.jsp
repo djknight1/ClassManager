@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,12 +12,16 @@
 <body>
 
 <div class="main-container">
-    <div class="main-wrap clearfix" >
+    <div class="main-wrap clearfix">
         <div id="slide-bar">
             <div class="list-group">
                 <div class="list-group-item list-group-title">上传内容</div>
-                <a style="background-color: #c92027; color: #fff;" class="list-group list-group-item upload" id="java-upload" data-name="java">Java</a>
-                <a class="list-group list-group-item upload" id="c-upload" data-name="c">C++</a>
+                <div class="post-group">
+                <c:forEach items="${types}" var="type">
+                    <a class="post-type list-group list-group-item upload" id="type${type.id}"
+                       data-flag="${type.id}">${type.subject}</a>
+                </c:forEach>
+                </div>
             </div>
         </div>
 
@@ -36,11 +41,13 @@
                     <div class="layui-upload-list">
                         <table class="layui-table">
                             <thead>
-                            <tr><th>文件名</th>
+                            <tr>
+                                <th>文件名</th>
                                 <th>大小</th>
                                 <th>状态</th>
                                 <th>操作</th>
-                            </tr></thead>
+                            </tr>
+                            </thead>
                             <tbody id="demoList"></tbody>
                         </table>
                     </div>
@@ -59,43 +66,70 @@
 <script src="${pageContext.request.contextPath}/js/submit-main.js"></script>
 
 <script>
-    layui.use('upload',function () {
+    <%--style="background-color: #c92027; color: #fff;"--%>
+
+
+    var types = $(".post-type");
+
+    $(".post-type:first-child").css("background-color", "#c92027");
+    $(".post-type:first-child").css("color", "#fff");
+    var typeId = $(".post-type:first-child").attr('data-flag');
+    console.log(typeId);
+    console.log($(".post-type:first-child"));
+    console.log($(".post-type:first-child").attr('data-flag'));
+    $(".post-type").each(function () {
+        console.log($(this));
+        $(this).click(function () {
+            types.each(function () {
+                $(this).css("background-color", "#fff");
+                $(this).css("color", "#4f4f4f");
+            });
+            $(this).css("background-color", "#c92027");
+            $(this).css("color", "#fff");
+            typeId = $(this).attr('data-flag');
+        })
+
+    });
+
+    layui.use('upload', function () {
         var $ = layui.jquery
-            ,upload = layui.upload;
+            , upload = layui.upload;
 
         var demoListView = $('#demoList')
-            ,uploadListIns = upload.render({
+            , uploadListIns = upload.render({
             elem: '#upload_main'
-            ,url: '/ajax/test/'
-            ,data:{
-                "id":0
+            , url: '/ajax/upload/'
+            , accept: 'file'
+            , multiple: true
+            , before: function (obj) {
+                this.data.params = typeId;
+                console.log(this.data.params);
             }
-            ,accept: 'file'
-            ,multiple: true
-            ,drag:true
-            ,auto: false
-            ,bindAction: '#testListAction'
-            ,choose: function(obj){
+            , drag: true
+            , auto: false
+            , method: "POST"
+            , bindAction: '#testListAction'
+            , choose: function (obj) {
                 var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
                 //读取本地文件
-                obj.preview(function(index, file, result){
-                    var tr = $(['<tr id="upload-'+ index +'">'
-                        ,'<td>'+ file.name +'</td>'
-                        ,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'
-                        ,'<td>等待上传</td>'
-                        ,'<td>'
-                        ,'<button class="layui-btn layui-btn-mini demo-reload layui-hide">重传</button>'
-                        ,'<button class="layui-btn layui-btn-mini layui-btn-danger demo-delete">删除</button>'
-                        ,'</td>'
-                        ,'</tr>'].join(''));
+                obj.preview(function (index, file, result) {
+                    var tr = $(['<tr id="upload-' + index + '">'
+                        , '<td>' + file.name + '</td>'
+                        , '<td>' + (file.size / 1014).toFixed(1) + 'kb</td>'
+                        , '<td>等待上传</td>'
+                        , '<td>'
+                        , '<button class="layui-btn layui-btn-mini demo-reload layui-hide">重传</button>'
+                        , '<button class="layui-btn layui-btn-mini layui-btn-danger demo-delete">删除</button>'
+                        , '</td>'
+                        , '</tr>'].join(''));
 
                     //单个重传
-                    tr.find('.demo-reload').on('click', function(){
+                    tr.find('.demo-reload').on('click', function () {
                         obj.upload(index, file);
                     });
 
                     //删除
-                    tr.find('.demo-delete').on('click', function(){
+                    tr.find('.demo-delete').on('click', function () {
                         delete files[index]; //删除对应的文件
                         tr.remove();
                         uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
@@ -104,20 +138,21 @@
                     demoListView.append(tr);
                 });
             }
-            ,done: function(res, index, upload){
-                if(res.code == 0){ //上传成功
-                    var tr = demoListView.find('tr#upload-'+ index)
-                        ,tds = tr.children();
+            , done: function (res, index, upload) {
+                if (res.code == 1) { //上传成功
+                    var tr = demoListView.find('tr#upload-' + index)
+                        , tds = tr.children();
                     tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
                     tds.eq(3).html(''); //清空操作
                     return delete this.files[index]; //删除文件队列已经上传成功的文件
+                } else {
+                    alert("上传失败")
                 }
-                this.error(index, upload);
             }
-            ,error: function(index, upload){
-                var tr = demoListView.find('tr#upload-'+ index)
-                    ,tds = tr.children();
-                tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+            , error: function (index, upload) {
+                var tr = demoListView.find('tr#upload-' + index)
+                    , tds = tr.children();
+                tds.eq(2).html('<span style="color: #FF5722;">服务器忙，请刷新</span>');
                 tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
             }
         });

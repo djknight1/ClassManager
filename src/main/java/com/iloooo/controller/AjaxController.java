@@ -1,6 +1,9 @@
 package com.iloooo.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.iloooo.bean.Task;
 import com.iloooo.bean.User;
+import com.iloooo.service.LoginService;
 import com.iloooo.service.impl.AdminServiceImpl;
 import com.iloooo.service.impl.LoginServiceImpl;
 import com.iloooo.service.impl.UploadServiceImpl;
@@ -16,6 +19,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -63,16 +67,15 @@ public class AjaxController {
 
     @RequestMapping(path = "/upload",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> updateFile(@RequestParam(value = "file", required = true) MultipartFile file, MultipartHttpServletRequest request) {
+    public Map<String, Object> updateFile(@RequestParam(value = "file", required = true) MultipartFile file,
+                                          @RequestParam(value = "params", required = false) String params,
+                                          MultipartHttpServletRequest request) {
         Map<String, Object> msg = new HashMap<String, Object>();
-        System.out.println("-------");
-        //MultipartFile file = (MultipartFile) request.getAttribute("file");
-        System.out.println(file.getName());
+        long typeId = Long.valueOf(params);
+        Task task =  updateService.getTaskByTypeId(typeId);
         String serverPath = request.getServletContext().getRealPath("/");
         boolean flag = updateService.updateHomework(file,
-                ((User) request.getSession().getAttribute("loginUser")).getId(),1,1,serverPath);
-                //(Long)request.getAttribute("typeId"),
-                //(Long)request.getAttribute("taskId"), serverPath);
+                ((User) request.getSession().getAttribute("loginUser")).getId(),typeId,task.getId(), serverPath);
         if (flag) {
             msg.put("code", 1);
             msg.put("msg", "请求成功");
@@ -91,14 +94,18 @@ public class AjaxController {
 
     }
 
-    @RequestMapping("/test")
-    public Map<String, Object> test(MultipartFile file) {
-//  /ajax/test    HtttpServletRequest request
-//      System.out.println(((File)request.getAttribute("file")).getName());
-        System.out.println(file.getName());
-
-        Map map = new HashMap<String, Object>();
-        map.put("msg", 1);
+    @RequestMapping("/password")
+    @ResponseBody
+    public Map<String, Object> password(@RequestParam("id") Long id, @RequestParam(value = "oldpassword",required=false) String oldPassword, @RequestParam(value = "newpassword",required=false) String newPassword) {
+        Map<String, Object> map = new HashMap<>();
+        User user = loginService.getUserById(id);
+        if (null != user && user.getPassword().equals(oldPassword)) {
+            user.setPassword(newPassword);
+            loginService.updateUser(user);
+            map.put("msg", true);
+        } else {
+            map.put("msg", false);
+        }
         return map;
     }
 }

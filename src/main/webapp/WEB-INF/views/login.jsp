@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Login-main.css">
 </head>
-<body>
+<body style="background-image: url('${pageContext.request.contextPath}/img/login-background.png')">
 <div class="main-body">
     <div id="login-container">
         <div class="pic-container">
@@ -18,8 +18,9 @@
             <ul class="layui-tab-title">
                 <li class="layui-this">登陆</li>
             </ul>
-            <form class="layui-tab-content" >
+            <form class="layui-tab-content" action="/check" method="post">
                 <div class="layui-tab-item layui-show">
+
                     <div class="user-name-input-container">
                         <span  id="username-input-error" style="display: none;">账号格式错误！</span>
                         <input data-rule='pattern:"^[0-9]*$"|max_length:10|min_length:6' class="layui-input login-item login-name" id="id" type="text" name="id" required
@@ -35,7 +36,7 @@
                     </div>
                     <div class="login-option clearfix">
                         <input type="button" class="button-control" id="admin" value="管理员">
-                        <input type="button" class="button-control" id="forget-password" value="修改密码?">
+                        <a type="button" class="button-control" id="forget-password" href="/password">修改密码</a>
                     </div>
                 </div>
                 <div class="login-button-container">

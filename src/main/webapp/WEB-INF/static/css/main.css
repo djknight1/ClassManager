@@ -3,7 +3,6 @@ body{
 }
 #main{
     width: 900px;
-    height: 300px;
     box-shadow: 0 0 10px #000;
     border: 1px solid #000;
     margin: 80px auto;

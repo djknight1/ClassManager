@@ -16,4 +16,6 @@ public interface LoginService {
     boolean isIdEmpty(long id);
 
     boolean isCorrectUser(long id, String password);
+
+    boolean updateUser(User user);
 }

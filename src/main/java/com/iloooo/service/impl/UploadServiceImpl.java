@@ -39,6 +39,7 @@ public class UploadServiceImpl implements UploadService {
         return taskDao.selectTaskNow();
     }
 
+
     @Override
     public List<Type> getTypeAll() {
         return typeDao.selectTypeAll();
@@ -46,27 +47,42 @@ public class UploadServiceImpl implements UploadService {
 
     @Override
     public boolean updateHomework(MultipartFile file, long userId, long typeId, long taskId, String serverPath) {
-        Homework homework = new Homework();
+        Homework homework = homeworkDao.selectByUserIdAndTaskId(userId, taskId);
+        int methodFlag = 0;
+        if (null == homework) {
+            homework = new Homework();
+            methodFlag = 1;
+        }
         User user = userDao.selectById(userId);
         Task task = taskDao.selectByTaskId(taskId);
-        String filename = file.getName();
+        String filename = file.getOriginalFilename();
         boolean ret = false;
         String homeworkName = user.getId() + " " + user.getName() + "_" + task.getFormatName() + FileUtils.getFileSuffix(filename);
-        String path = FileUtils.FILE_PATH_PREFIX + task.getTaskPath() + "/" + homeworkName;
+        String path = FileUtils.FILE_PATH_PREFIX + task.getTaskPath() + "\\" + homeworkName;
+        ///WEB-INF/file/2222/1160299021sfdsfsd.doc
         ///....Do write file work
-        if (FileUtils.update(file, path, serverPath)) {
-            homework.setName(homeworkName);
-            homework.setUserId(userId);
-            homework.setPath(path);
-            homework.setDatetime(new Timestamp(new Date().getTime()));
-            homework.setTaskId(taskId);
-            homework.setTypeId(typeId);
+        boolean updateFlag = FileUtils.update(file, path, serverPath);
+        homework.setName(homeworkName);
+        homework.setUserId(userId);
+        homework.setPath(path);
+        homework.setTime(new Timestamp(new Date().getTime()));
+        homework.setTaskId(taskId);
+        homework.setTypeId(typeId);
+        if (updateFlag && methodFlag == 1) {
             homeworkDao.insertHomework(homework);
+            ret = true;
+        } else if (updateFlag && methodFlag == 0) {
+            homeworkDao.updateHomework(homework);
             ret = true;
         } else {
             ret = false;
         }
         return ret;
+    }
+
+    @Override
+    public Task getTaskByTypeId(long typeId ) {
+        return taskDao.selectTaskNowByTypeId(typeId);
     }
 
 }

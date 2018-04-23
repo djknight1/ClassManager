@@ -33,7 +33,7 @@ $(function () {
                 return;
             }
         }
-        alert("ok");
+
     })
 });
 /*  使用new操作符调用构造函数时，会经历

@@ -26,15 +26,18 @@ public class LoginController {
         }
     }
 
-    @RequestMapping("adminLogin")
-    public String adminLogin(HttpSession session) {
-        if (null == session.getAttribute("adminUser")) {
-            return "login-admin";
-        } else {
-            return "redirect:/admin";
-        }
-
+    @RequestMapping("/password")
+    public String password() {
+        return "password";
     }
 
+    @RequestMapping("/loginAdmin")
+    public String loginAdmin(HttpSession session) {
+        if (null==session.getAttribute("adminUser")){
+            return "login-admin";
+        } else{
+            return "redirect:/admin";
+        }
+    }
 
 }

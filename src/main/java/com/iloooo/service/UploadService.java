@@ -16,4 +16,7 @@ public interface UploadService {
 
     boolean updateHomework(MultipartFile file,long userId, long typeId, long taskId,String serverPath);
 
+    Task getTaskByTypeId(long typeId);
+
+
 }

@@ -52,6 +52,11 @@ public class LoginServiceImpl implements LoginService {
         return ret;
     }
 
+    @Override
+    public boolean updateUser(User user) {
+        return userDao.updateUser(user);
+    }
+
     public List<User> selectByClassId(int classId){
         return userDao.selectByClassId(classId);
     }
