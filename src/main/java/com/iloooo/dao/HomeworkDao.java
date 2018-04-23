@@ -12,13 +12,13 @@ public interface HomeworkDao {
     @Insert("insert into homework(Id, userId, typeId, taskId, name, path, time)values(#{Id}, #{userId}, #{typeId}, #{taskId}, #{name}, #{path}, #{time})")
     boolean insertHomework(Homework homework);
     @Delete("delete from homework where Id = #{Id}")
-    boolean deleteById(int Id);
+    boolean deleteById(long Id);
     @Select("select * from homework where userId = #{userId}")
-    Homework selectByUserId(int userId);
+    Homework selectByUserId(long userId);
     @Select("select * from homework where typeId = #{typeId}")
-    List<Homework> selectByTypeId(int typeId);
+    List<Homework> selectByTypeId(long typeId);
     @Select("select * from homework where taskId = #{taskId}")
-    List<Homework> selectByTaskId(int taskId);
+    List<Homework> selectByTaskId(long taskId);
     @Select("select * from homework")
     List<Homework> selectAllHomework();
 

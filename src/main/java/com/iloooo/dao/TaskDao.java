@@ -16,4 +16,7 @@ public interface TaskDao {
 
     @Select("select * from task where flag = 1")
     List<Task> selectTaskNow();
+
+    @Select("select * from task where typeId = #{typeId}")
+    List<Task> selectTaskByTypeId(long typeId);
 }

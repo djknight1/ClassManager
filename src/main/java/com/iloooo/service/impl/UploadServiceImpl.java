@@ -6,7 +6,7 @@ import com.iloooo.bean.Type;
 import com.iloooo.bean.User;
 import com.iloooo.dao.*;
 import com.iloooo.service.UploadService;
-import com.iloooo.utils.UpdateFileUtils;
+import com.iloooo.utils.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -51,10 +51,10 @@ public class UploadServiceImpl implements UploadService {
         Task task = taskDao.selectByTaskId(taskId);
         String filename = file.getName();
         boolean ret = false;
-        String homeworkName = user.getId() + " " + user.getName() + "_" + task.getFormatName() + UpdateFileUtils.getFileSuffix(filename);
-        String path = UpdateFileUtils.FILE_PATH_PREFIX + task.getTaskPath() + "/" + homeworkName;
+        String homeworkName = user.getId() + " " + user.getName() + "_" + task.getFormatName() + FileUtils.getFileSuffix(filename);
+        String path = FileUtils.FILE_PATH_PREFIX + task.getTaskPath() + "/" + homeworkName;
         ///....Do write file work
-        if (UpdateFileUtils.update(file, path, serverPath)) {
+        if (FileUtils.update(file, path, serverPath)) {
             homework.setName(homeworkName);
             homework.setUserId(userId);
             homework.setPath(path);

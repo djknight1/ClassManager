@@ -77,5 +77,11 @@ public class AjaxController {
         return msg;
     }
 
+    @RequestMapping(path = "/download", method = RequestMethod.POST)
+    @ResponseBody
+    public void downloadFile() {
+
+    }
+
 
 }

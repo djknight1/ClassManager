@@ -1,12 +1,11 @@
 package com.iloooo.utils;
 
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.IOException;
 
-public  class UpdateFileUtils {
+//  /home/feng/wepapp/root/WEB-INF/file/   taskPath/filename .doc(suffix)
+public  class FileUtils {
     public static String FILE_PATH_PREFIX = "/WEB-INF/file/";
 
     public    static boolean update(MultipartFile file,String path,String serverPath) {
