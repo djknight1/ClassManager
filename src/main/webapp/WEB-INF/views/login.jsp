@@ -98,12 +98,10 @@
             success: function (result) {
                 var data = JSON.parse(JSON.stringify(result));
                 if (data.msg === true) {
-                    alert("登陆成功");
                     window.location.href = "/upload";
                 } else if (data.msg === false) {
-                    alert("账号密码错误/账号不存在");
+                    alert("账号密码错误");
                 }
-
             },//JSON.stringify(data)
             error: function () {
                 alert("error");

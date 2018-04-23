@@ -21,11 +21,11 @@
         </div>
 
         <div class="edit-container clearfix">
-            <div class="upload-component-container">
+            <form class="upload-component-container" method="post" enctype="multipart/form-data">
                 <fieldset class="layui-elem-field layui-field-title">
                     <legend>文档上传</legend>
                 </fieldset>
-                <div class="layui-upload-drag" id="upload_main">
+                <div class="layui-upload-drag" id="upload_main" name="file">
                     <i class="layui-icon"></i>
                     <p>点击上传，或将文件拖拽到此处</p>
                 </div>
@@ -46,7 +46,7 @@
                     </div>
                     <button type="button" class="layui-btn" id="testListAction">开始上传</button>
                 </div>
-            </div>
+            </form>
 
         </div>
     </div>
@@ -66,7 +66,10 @@
         var demoListView = $('#demoList')
             ,uploadListIns = upload.render({
             elem: '#upload_main'
-            ,url: '/upload/'
+            ,url: '/ajax/test/'
+            ,data:{
+                "id":0
+            }
             ,accept: 'file'
             ,multiple: true
             ,drag:true

@@ -50,6 +50,7 @@
     <mvc:resources mapping="/layui/**" location="WEB-INF/static/layui/" />
     <mvc:resources mapping="/layui/font/**" location="WEB-INF/static/layui/font/" />
     <mvc:resources mapping="/layui/lay/modules/**" location="WEB-INF/static/layui/lay/modules/" />
+    <mvc:resources mapping="/file/**" location="WEB-INF/file/" />
 
     <!-- 添加注解驱动 -->
     <mvc:annotation-driven enable-matrix-variables="true" />

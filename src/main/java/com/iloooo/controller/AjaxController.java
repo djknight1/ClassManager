@@ -8,8 +8,10 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -59,20 +61,26 @@ public class AjaxController {
         return msg;
     }
 
-    @RequestMapping(path = "/upload")
+    @RequestMapping(path = "/upload",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Boolean> updateFile(HttpServletRequest request) {
-        Map<String, Boolean> msg = new HashMap<String, Boolean>();
-        MultipartFile file = (MultipartFile) request.getAttribute("file");
+    public Map<String, Object> updateFile(@RequestParam(value = "file", required = true) MultipartFile file, MultipartHttpServletRequest request) {
+        Map<String, Object> msg = new HashMap<String, Object>();
+        System.out.println("-------");
+        //MultipartFile file = (MultipartFile) request.getAttribute("file");
+        System.out.println(file.getName());
         String serverPath = request.getServletContext().getRealPath("/");
         boolean flag = updateService.updateHomework(file,
-                ((User) request.getSession().getAttribute("loginUser")).getId(),
-                (Long)request.getAttribute("typeId"),
-                (Long)request.getAttribute("taskId"), serverPath);
+                ((User) request.getSession().getAttribute("loginUser")).getId(),1,1,serverPath);
+                //(Long)request.getAttribute("typeId"),
+                //(Long)request.getAttribute("taskId"), serverPath);
         if (flag) {
-            msg.put("msg", true);
+            msg.put("code", 1);
+            msg.put("msg", "请求成功");
+            msg.put("data", null);
         } else {
-            msg.put("msg", false);
+            msg.put("code", 0);
+            msg.put("msg", "请求失败");
+            msg.put("data", null);
         }
         return msg;
     }
@@ -83,5 +91,13 @@ public class AjaxController {
 
     }
 
+    @RequestMapping("/test")
+    public Map<String, Object> test(MultipartFile file) {
 
+        System.out.println(file.getName());
+
+        Map map = new HashMap<String, Object>();
+        map.put("msg", 1);
+        return map;
+    }
 }

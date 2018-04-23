@@ -19,7 +19,7 @@
     <context:component-scan base-package="com.iloooo.*"/>
     <!--Mybatis 配置-->
     <mybatis:scan base-package="com.iloooo.*"/>
-    <context:property-placeholder location="/db.properties"/>
+    <context:property-placeholder location="/WEB-INF/db.properties"/>
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <property name="url" value="${jdbc.url}"/>

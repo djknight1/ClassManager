@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.ContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="classpath:applicationContext.xml" )
+@ContextConfiguration(locations= "classpath:WEB-INF/applicationContext.xml")
 @Transactional(transactionManager="transactionManager")
 public class Main {
     private static final org.springframework.web.context.ContextLoader ContextLoader = new ContextLoader();
