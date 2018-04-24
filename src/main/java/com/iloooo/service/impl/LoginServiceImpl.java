@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("userServiceImpl")
+@Service("loginServiceImpl")
 public class LoginServiceImpl implements LoginService {
     private final UserDao userDao;
 
