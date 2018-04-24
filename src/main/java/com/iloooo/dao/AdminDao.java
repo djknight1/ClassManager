@@ -1,6 +1,6 @@
 package com.iloooo.dao;
 
-import com.iloooo.bean.Admin;
+import com.iloooo.entity.Admin;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 @Mapper

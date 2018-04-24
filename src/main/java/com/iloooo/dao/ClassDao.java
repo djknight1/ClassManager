@@ -2,7 +2,7 @@ package com.iloooo.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import com.iloooo.bean.Class;
+import com.iloooo.entity.Class;
 import java.util.List;
 
 @Mapper

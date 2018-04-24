@@ -1,4 +1,4 @@
-package com.iloooo.bean;
+package com.iloooo.entity;
 
 import java.sql.Timestamp;
 

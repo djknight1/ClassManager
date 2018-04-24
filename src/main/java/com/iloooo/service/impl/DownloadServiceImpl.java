@@ -1,9 +1,9 @@
 package com.iloooo.service.impl;
 
-import com.iloooo.bean.Class;
-import com.iloooo.bean.Homework;
-import com.iloooo.bean.Task;
-import com.iloooo.bean.Type;
+import com.iloooo.entity.Class;
+import com.iloooo.entity.Homework;
+import com.iloooo.entity.Task;
+import com.iloooo.entity.Type;
 import com.iloooo.dao.ClassDao;
 import com.iloooo.dao.HomeworkDao;
 import com.iloooo.dao.TaskDao;

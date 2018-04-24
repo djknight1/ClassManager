@@ -1,9 +1,7 @@
 package com.iloooo.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.iloooo.bean.Task;
-import com.iloooo.bean.User;
-import com.iloooo.service.LoginService;
+import com.iloooo.entity.Task;
+import com.iloooo.entity.User;
 import com.iloooo.service.impl.AdminServiceImpl;
 import com.iloooo.service.impl.LoginServiceImpl;
 import com.iloooo.service.impl.UploadServiceImpl;
@@ -16,10 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -28,6 +24,7 @@ public class AjaxController {
     private LoginServiceImpl loginService;
     private UploadServiceImpl updateService;
     private AdminServiceImpl adminService;
+
 
     public AjaxController(LoginServiceImpl loginService, UploadServiceImpl updateService, AdminServiceImpl adminService) {
         this.loginService = loginService;

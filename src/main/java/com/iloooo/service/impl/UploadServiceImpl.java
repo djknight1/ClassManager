@@ -1,16 +1,19 @@
 package com.iloooo.service.impl;
 
-import com.iloooo.bean.Homework;
-import com.iloooo.bean.Task;
-import com.iloooo.bean.Type;
-import com.iloooo.bean.User;
+import com.iloooo.entity.Homework;
+import com.iloooo.entity.Task;
+import com.iloooo.entity.Type;
+import com.iloooo.entity.User;
 import com.iloooo.dao.*;
 import com.iloooo.service.UploadService;
-import com.iloooo.utils.FileUtils;
+import com.iloooo.utils.CONSTANTS;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -48,37 +51,43 @@ public class UploadServiceImpl implements UploadService {
     @Override
     public boolean updateHomework(MultipartFile file, long userId, long typeId, long taskId, String serverPath) {
         Homework homework = homeworkDao.selectByUserIdAndTaskId(userId, taskId);
-        int methodFlag = 0;
-        if (null == homework) {
-            homework = new Homework();
-            methodFlag = 1;
-        }
         User user = userDao.selectById(userId);
         Task task = taskDao.selectByTaskId(taskId);
+        boolean methodFlag = false;
         String filename = file.getOriginalFilename();
-        boolean ret = false;
-        String homeworkName = user.getId() + " " + user.getName() + "_" + task.getFormatName() + FileUtils.getFileSuffix(filename);
-        String path = FileUtils.FILE_PATH_PREFIX + task.getTaskPath() + "/" + homeworkName;
-        ///WEB-INF/file/2222/1160299021sfdsfsd.doc
-        ///....Do write file work
-        boolean updateFlag = FileUtils.update(file, path, serverPath);
+        String homeworkName = user.getId() + " " + user.getName() + "_" + task.getFormatName() + filename.substring(filename.lastIndexOf("."));;
+        String path = CONSTANTS.FILE_PATH_PREFIX + task.getTaskPath() + "/" + homeworkName;
+        String fullPath = serverPath + path;
+        String prefix = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
+        File fileDir=new File(prefix);
+        File localFile = new File(serverPath+path);
+        if (homework == null) {
+            homework = new Homework();
+            methodFlag = true;
+        }
         homework.setName(homeworkName);
         homework.setUserId(userId);
         homework.setPath(path);
         homework.setTime(new Timestamp(new Date().getTime()));
         homework.setTaskId(taskId);
         homework.setTypeId(typeId);
-        if (updateFlag && methodFlag == 1) {
-            homeworkDao.insertHomework(homework);
-            ret = true;
-        } else if (updateFlag && methodFlag == 0) {
-            homeworkDao.updateHomework(homework);
-            ret = true;
-        } else {
-            ret = false;
+        fileDir.mkdirs();
+        try {
+            file.transferTo(localFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
         }
-        return ret;
+        if (methodFlag) {
+            homeworkDao.insertHomework(homework);
+        } else{
+            homeworkDao.updateHomework(homework);
+        }
+
+
+        return true;
     }
+
 
     @Override
     public Task getTaskByTypeId(long typeId ) {

@@ -1,6 +1,6 @@
 package com.iloooo.dao;
 
-import com.iloooo.bean.User;
+import com.iloooo.entity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -19,4 +19,7 @@ public interface UserDao {
 
     @Update("update user set classId=#{classId},password=#{password},name=#{name} where id=#{id}")
     boolean updateUser(User user);
+
+    @Delete("delete from user where id=#{id}")
+    boolean deleteUserById(long id);
 }

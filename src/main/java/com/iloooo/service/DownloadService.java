@@ -1,9 +1,9 @@
 package com.iloooo.service;
 
-import com.iloooo.bean.Class;
-import com.iloooo.bean.Homework;
-import com.iloooo.bean.Task;
-import com.iloooo.bean.Type;
+import com.iloooo.entity.Class;
+import com.iloooo.entity.Homework;
+import com.iloooo.entity.Task;
+import com.iloooo.entity.Type;
 
 import java.util.List;
 

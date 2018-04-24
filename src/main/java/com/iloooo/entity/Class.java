@@ -1,4 +1,4 @@
-package com.iloooo.bean;
+package com.iloooo.entity;
 
 public class Class {
     private long Id;
