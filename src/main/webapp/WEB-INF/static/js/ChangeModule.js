@@ -1,39 +1,46 @@
 $(function () {
-    "use strict";
 
     window.Choose_upload = function (selector) {
-        var $ele,upload_way_of_id,upload_name;
-
+        let $ele, typeId;
         function init() {
             get_ele();
-            get_upload_way();
+            set_attr();
         }
 
+
         function get_ele() {
-            if(selector instanceof $) {
+            if (selector instanceof $) {
                 $ele = selector;
             }
-            else{
+            else {
                 $ele = $(selector);
             }
         }
 
-        function get_upload_way() {
-            console.log($ele);
-            upload_name = $ele.data("name");
-            console.log(upload_name);
-            upload_way_of_id ="#"+upload_name+"-upload";
-            console.log($(upload_way_of_id));
+        function set_attr() {
+            $(".post-type:first-child").css("background-color", "#c92027");
+            $(".post-type:first-child").css("color", "#fff");
+            typeId=$(".post-type:first-child").attr('data-flag');
         }
 
-        this.open_new_web = function () {
-            $(upload_way_of_id).on("click",function () {
-                window.open("./"+upload_name+"-submit.html");
+        this.changeColorandType = function() {
+            console.log($ele);
+            $ele.each(function () {
+                $(this).click(function () {
+                    $ele.each(function () {
+                        $(this).css("background-color", "#fff");
+                        $(this).css("color", "#4f4f4f");
+                    });
+                    $(this).css("background-color", "#c92027");
+                    $(this).css("color", "#fff");
+                    typeId = $(this).attr('data-flag');
             })
+        })
+            return typeId;
         };
 
         init();
-        this.open_new_web();
+
     };
 
 
