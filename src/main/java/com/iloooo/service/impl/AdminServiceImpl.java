@@ -1,14 +1,9 @@
 package com.iloooo.service.impl;
 
-import com.iloooo.bean.Admin;
-import com.iloooo.bean.Class;
-import com.iloooo.bean.Homework;
-import com.iloooo.bean.Task;
+import com.iloooo.entity.Admin;
 import com.iloooo.dao.*;
 import com.iloooo.service.AdminService;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service("adminServiceImpl")
 public class AdminServiceImpl implements AdminService {

@@ -1,8 +1,6 @@
 package com.iloooo.service;
 
-import com.iloooo.bean.Admin;
-
-import java.util.List;
+import com.iloooo.entity.Admin;
 
 public interface AdminService {
     Admin getAdminByUsername(String username);

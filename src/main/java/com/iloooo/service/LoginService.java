@@ -1,7 +1,7 @@
 package com.iloooo.service;
 
 
-import com.iloooo.bean.User;
+import com.iloooo.entity.User;
 
 import java.util.List;
 

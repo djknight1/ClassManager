@@ -1,6 +1,6 @@
 package com.iloooo.dao;
 
-import com.iloooo.bean.Task;
+import com.iloooo.entity.Task;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

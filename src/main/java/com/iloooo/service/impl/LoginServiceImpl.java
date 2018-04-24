@@ -1,7 +1,7 @@
 package com.iloooo.service.impl;
 
 
-import com.iloooo.bean.User;
+import com.iloooo.entity.User;
 import com.iloooo.dao.UserDao;
 import com.iloooo.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;

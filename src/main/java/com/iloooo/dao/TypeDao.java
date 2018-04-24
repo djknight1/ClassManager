@@ -1,6 +1,6 @@
 package com.iloooo.dao;
 
-import com.iloooo.bean.Type;
+import com.iloooo.entity.Type;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

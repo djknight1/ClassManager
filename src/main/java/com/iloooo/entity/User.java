@@ -1,6 +1,4 @@
-package com.iloooo.bean;
-
-import org.springframework.context.annotation.Bean;
+package com.iloooo.entity;
 
 public class User {
     private long id;
