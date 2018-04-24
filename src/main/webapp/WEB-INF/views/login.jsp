@@ -48,25 +48,8 @@
     </div>
     <footer class="footer-main">
         <div class="footer-line footer-line1">
-            <a href="#">XXXX</a>
-            <a href="#">XXXX</a>
-            <a href="#">XXXX</a>
-            <a href="#">XXXX</a>
-            <a href="#">XXXX</a>
-        </div>
-        <div class="footer-line footer-line2">
-            <a href="#">XXXX</a>
-            <a href="#">XXXX</a>
-            <a href="#">XXXXX</a>
-            <a href="#">XXXX</a>
-            <a href="#">XXXX</a>
-        </div>
-        <div class="footer-line footer-line3">
-            <a href="#">XXXX</a>
-            <a href="#">XXXX</a>
-            <a href="#">XXXX</a>
-            <a href="#">XXXX</a>
-            <a href="#">XXXXXXXXXXXXX</a>
+            <div><strong style="font-size: 15px">Powered by 计算机161林昊 罗峰 平叶超</strong></div>
+            <div><strong style="font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算机162 朱登杰 </strong></div>
         </div>
     </footer>
 </div>
