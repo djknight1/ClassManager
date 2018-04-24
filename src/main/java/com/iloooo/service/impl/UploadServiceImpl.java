@@ -6,8 +6,9 @@ import com.iloooo.entity.Type;
 import com.iloooo.entity.User;
 import com.iloooo.dao.*;
 import com.iloooo.service.UploadService;
-import com.iloooo.utils.FileUtils;
+import com.iloooo.utils.CONSTANTS;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -49,59 +50,44 @@ public class UploadServiceImpl implements UploadService {
 
     @Override
     public boolean updateHomework(MultipartFile file, long userId, long typeId, long taskId, String serverPath) {
-        System.out.println(file);
-
         Homework homework = homeworkDao.selectByUserIdAndTaskId(userId, taskId);
-        int methodFlag = 0;
-        int fullPathFlag = 0;
-        boolean updateFlag = false;
-        if (null == homework) {
-            homework = new Homework();
-            methodFlag = 1;
-        }
         User user = userDao.selectById(userId);
         Task task = taskDao.selectByTaskId(taskId);
+        boolean methodFlag = false;
         String filename = file.getOriginalFilename();
-        boolean ret = false;
-        String homeworkName = user.getId() + " " + user.getName() + "_" + task.getFormatName() + FileUtils.getFileSuffix(filename);
-        String path = FileUtils.FILE_PATH_PREFIX + task.getTaskPath() + "/" + homeworkName;
+        String homeworkName = user.getId() + " " + user.getName() + "_" + task.getFormatName() + filename.substring(filename.lastIndexOf("."));;
+        String path = CONSTANTS.FILE_PATH_PREFIX + task.getTaskPath() + "/" + homeworkName;
         String fullPath = serverPath + path;
-        for (int i = fullPath.length()-1; i >=0 ; i--) {
-            if(fullPath.charAt(i)=='/'){
-                fullPathFlag = i;
-                break;
-            }
-        }
-        String prefix = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);//fullPathFlag+1);
-        System.out.println(prefix);
+        String prefix = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
         File fileDir=new File(prefix);
         File localFile = new File(serverPath+path);
-        fileDir.mkdirs();
-        try {
-            file.transferTo(localFile);
-            updateFlag = true;//fileName;
-        } catch (IOException e) {
-            updateFlag = false;
-            e.printStackTrace();
+        if (homework == null) {
+            homework = new Homework();
+            methodFlag = true;
         }
-
         homework.setName(homeworkName);
         homework.setUserId(userId);
         homework.setPath(path);
         homework.setTime(new Timestamp(new Date().getTime()));
         homework.setTaskId(taskId);
         homework.setTypeId(typeId);
-        if (updateFlag && methodFlag == 1) {
-            homeworkDao.insertHomework(homework);
-            ret = true;
-        } else if (updateFlag && methodFlag == 0) {
-            homeworkDao.updateHomework(homework);
-            ret = true;
-        } else {
-            ret = false;
+        fileDir.mkdirs();
+        try {
+            file.transferTo(localFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
         }
-        return ret;
+        if (methodFlag) {
+            homeworkDao.insertHomework(homework);
+        } else{
+            homeworkDao.updateHomework(homework);
+        }
+
+
+        return true;
     }
+
 
     @Override
     public Task getTaskByTypeId(long typeId ) {
