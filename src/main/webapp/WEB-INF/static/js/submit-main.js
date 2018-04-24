@@ -1,9 +1,16 @@
 $(function () {
     "use strict";
-    var $upload;
-    var uploads = [];
-    $upload = $(".upload");
-    $upload.each(function (key,node) {
-        uploads.push(new Choose_upload(node));
-    });
+    console.log($(".post-type"));
+    $(".post-type").each(function () {
+        let str =`<div class="updated-list">
+                    <div class="top-header clearfix">
+                        <h1>${$(this).html()}已上传文件</h1>
+                    </div>
+                    <ul class="article-list">
+                        <li><a href="#">XXXXX</a></li>
+                    </ul>
+                </div>
+`
+        $(".right-bar-container").append(str);
+    })
 });

@@ -8,8 +8,37 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/submit-main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/java-submit.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
+
 </head>
 <body>
+
+
+<div class="navbar navbar-default">
+    <div class="container ">
+        <div class="navbar-header clearfix">
+            <a href="#" class="navbar-brand"><img src="/img/logo.png"></a>
+        </div>
+        <div class="nav navbar-nav">
+            <li><a href="/">首页</a></li>
+            <li><a href="/knowledge">作业</a></li>
+            <li><a href="/school">综测</a></li>
+        </div>
+        <form class="navbar-form navbar-left">
+            <div class="serachTags">
+                <a href="#">你想搜啥子</a>
+            </div>
+            <div class="form-group serach-area">
+                <input type="text" class="search-input">
+            </div>
+            <div class="search-inco"></div>
+        </form>
+        <div class="nav navbar-nav navbar-right">
+            <li><a href="/login">退出登录</a></li>
+            <li><a href="/admin">后台</a></li>
+        </div>
+    </div>
+</div>
 
 <div class="main-container">
     <div class="main-wrap clearfix">
@@ -56,6 +85,60 @@
             </form>
 
         </div>
+
+        <div id="slide-right-bar">
+            <div class="right-bar-container">
+                <%--用户信息--%>
+                <div class="user-info">
+                    <div class="user-status">
+                        <h3>My friend：<span class="user-name">XXX</span></h3>
+                        <div class="user-class">
+                            你的班级是<span>计算机XXX</span>
+                        </div>
+                    </div>
+                </div>
+                <%--用户近期发布--%>
+                <div class="user-task-info"><!--加一个用户星级-->
+                    <ul>
+                        <li>当前任务</li>
+                        <li>Java第一次作业</li>
+                        <li>Java第一次作业</li>
+                        <li>Java第一次作业</li>
+                        <li>Java第一次作业</li>
+                    </ul>
+                </div>
+
+
+               <%-- <div class="updated-list">
+                    <div class="top-header clearfix">
+                        <h1>Java已上传文件</h1>
+                    </div>
+                    <ul class="article-list">
+                        <li><a href="#">XXXXX</a></li>
+                    </ul>
+                </div>
+
+                <div class="updated-list">
+                    <div class="top-header clearfix">
+                        <h1>Java已上传文件</h1>
+                    </div>
+                    <ul class="article-list">
+                        <li><a href="#">XXXXX</a></li>
+                    </ul>
+                </div>
+
+                <div class="updated-list">
+                    <div class="top-header clearfix">
+                        <h1>Java已上传文件</h1>
+                    </div>
+                    <ul class="article-list">
+                        <li><a href="#">XXXXX</a></li>
+                    </ul>
+                </div>
+--%>
+
+            </div>
+        </div>
     </div>
 </div>
 
@@ -64,37 +147,17 @@
 <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
 <script src="${pageContext.request.contextPath}/js/ChangeModule.js"></script>
 <script src="${pageContext.request.contextPath}/js/submit-main.js"></script>
+<script src="${pageContext.request.contextPath}/js/ChangeModule.js"></script>
 
 <script>
-    <%--style="background-color: #c92027; color: #fff;"--%>
+    $(function () {
+        let typeId = 1;
+        const choose = new Choose_upload($(".post-type"));
+        typeId = choose.changeColorandType();
 
-
-    var types = $(".post-type");
-
-    $(".post-type:first-child").css("background-color", "#c92027");
-    $(".post-type:first-child").css("color", "#fff");
-    var typeId = $(".post-type:first-child").attr('data-flag');
-    console.log(typeId);
-    console.log($(".post-type:first-child"));
-    console.log($(".post-type:first-child").attr('data-flag'));
-    $(".post-type").each(function () {
-        console.log($(this));
-        $(this).click(function () {
-            types.each(function () {
-                $(this).css("background-color", "#fff");
-                $(this).css("color", "#4f4f4f");
-            });
-            $(this).css("background-color", "#c92027");
-            $(this).css("color", "#fff");
-            typeId = $(this).attr('data-flag');
-        })
-
-    });
-
-    layui.use('upload', function () {
+        layui.use('upload', function () {
         var $ = layui.jquery
             , upload = layui.upload;
-
         var demoListView = $('#demoList')
             , uploadListIns = upload.render({
             elem: '#upload_main'
@@ -156,6 +219,7 @@
                 tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
             }
         });
+    })
     })
 </script>
 </body>
