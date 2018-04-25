@@ -1,9 +1,11 @@
 package com.iloooo.controller;
 
+import com.iloooo.entity.Class;
 import com.iloooo.entity.Homework;
 import com.iloooo.entity.Task;
 import com.iloooo.entity.Type;
 import com.iloooo.entity.User;
+import com.iloooo.service.ClassService;
 import com.iloooo.service.impl.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +30,16 @@ public class AjaxController {
     private AdminServiceImpl adminService;
     private TypeServiceImpl typeService;
     private HomeworkServiceImpl homeworkService;
+    private ClassServiceImpl classService;
 
     @Autowired
-    public AjaxController(LoginServiceImpl loginService, UploadServiceImpl uploadService, AdminServiceImpl adminService, TypeServiceImpl typeService, HomeworkServiceImpl homeworkService) {
+    public AjaxController(LoginServiceImpl loginService, UploadServiceImpl uploadService, AdminServiceImpl adminService, TypeServiceImpl typeService, HomeworkServiceImpl homeworkService, ClassServiceImpl classService) {
         this.loginService = loginService;
         this.uploadService = uploadService;
         this.adminService = adminService;
         this.typeService = typeService;
         this.homeworkService = homeworkService;
+        this.classService = classService;
     }
 
     //用户登陆
@@ -117,10 +121,12 @@ public class AjaxController {
     public Map<String, Object> uploadData(HttpSession session) {
         Map<String, Object> map = new HashMap<>();
         User user = (User) session.getAttribute("loginUser");
-        List<Type> types = uploadService.getTypeAll();
+        List<Type> types = typeService.getTypeAll();
         List<Task> tasks = uploadService.getTaskNow();
+        Class userClass = classService.getClassById(user.getId());
         List<Homework> homeworks = homeworkService.getHomeworkListByUserId(user.getId());
         map.put("user", user);
+        map.put("userClass",userClass);
         map.put("types", types);
         map.put("tasks", tasks);
         map.put("homeworks", homeworks);

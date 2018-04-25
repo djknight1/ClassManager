@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin-icon.css">
 
-    <title>Title</title>
+    <title>管理 - ZUST Computer Science 16</title>
 </head>
 <body>
     <div class="view-container">

@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface ClassDao {
     @Select("select * from class where Id = #{Id}")
-    Class selectById(int Id);
+    Class selectById(long Id);
     @Select("select * from class where classname = #{classname}")
     Class selectByClassName(String classname);
 

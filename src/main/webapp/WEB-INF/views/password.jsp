@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>修改密码</title>
+    <title>修改密码 - ZUST Computer Science 16</title>
 </head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/initcss.css">
