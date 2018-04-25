@@ -1,0 +1,49 @@
+body{
+    background: url("../img/bg.png") no-repeat;
+}
+#container{
+    width: 600px;
+    background-color: rgba(255,255,255,.3);
+    box-shadow: 0 0 5px #666666;
+    margin: 100px auto;
+}
+#imgList{
+    width: 600px;
+    height: 200px;
+    position: relative;
+}
+#imgList li {
+    position: absolute;
+    animation: flash 1s alternate infinite;
+}
+@keyframes flash {
+    0%{opacity: 0.3;}
+    100%{opacity: 1;transform: rotate(180deg);}
+}
+
+
+#errorMsg{
+    margin-top: 80px;
+    text-align: center;
+    font-family: Consolas;
+    font-size: 60px;
+}
+
+#jumpSpan{
+    margin-top: 80px;
+    text-align: center;
+    font-family: Consolas;
+    font-size: 20px;
+}
+#progress{
+    width: 0px;
+    height: 20px;
+    background-color: #666;
+}
+#progress{
+    width: 0px;
+    height: 1px;
+    box-shadow: 10px 2px 10px #000000;
+    background-color: #666;
+}
+
