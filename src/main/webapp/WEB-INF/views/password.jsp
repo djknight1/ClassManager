@@ -42,7 +42,7 @@
         var newpassword = $("#newpassword").val();
         $.ajax({
             type: 'POST',
-            url: "/ajax/check",
+            url: "/ajax/password",
             data: {
                 'id': id,
                 'oldpassword': oldpassword,

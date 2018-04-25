@@ -35,7 +35,7 @@ public class LoginController {
     @RequestMapping("/loginAdmin")
     public String loginAdmin(HttpSession session) {
         if (null==session.getAttribute("adminUser")){
-            return "login-admin";
+            return "redirect:/";
         } else{
             return "redirect:/admin";
         }

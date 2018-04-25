@@ -9,9 +9,9 @@
 <div class="main-body">
     <div id="login-container">
         <div class="pic-container">
-            <img src="${pageContext.request.contextPath}/img/logo.png">
+            <img style="display: block; width: 100%; padding: 10px 2px;" src="${pageContext.request.contextPath}/img/logo.png">
             <div class="pic-title">
-                计算机科学与技术
+                班级事务管理系统
             </div>
         </div>
         <div class="layui-tab">
