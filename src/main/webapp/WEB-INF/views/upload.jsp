@@ -84,6 +84,26 @@
                 </div>
             </form>
 
+            <div class="uploaded-task-container">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend>已上传文件</legend>
+                </fieldset>
+
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>文件名</th>
+                        <th>上传状态</th>
+                        <th>上传时间</th>
+                    </tr>
+                    </thead>
+                    <tbody id="demoList"></tbody>
+                </table>
+
+            </div>
+
+
+
         </div>
 
         <div id="slide-right-bar">
@@ -91,7 +111,7 @@
                 <%--用户信息--%>
                 <div class="user-info">
                     <div class="user-status">
-                        <h3>My friend：<span class="user-name">XXX</span></h3>
+                        <h3>你好:<span class="user-name">XXX</span></h3>
                         <div class="user-class">
                             你的班级是<span>计算机XXX</span>
                         </div>
@@ -101,41 +121,8 @@
                 <div class="user-task-info"><!--加一个用户星级-->
                     <ul>
                         <li>当前任务</li>
-                        <li>Java第一次作业</li>
-                        <li>Java第一次作业</li>
-                        <li>Java第一次作业</li>
-                        <li>Java第一次作业</li>
                     </ul>
                 </div>
-
-
-               <%-- <div class="updated-list">
-                    <div class="top-header clearfix">
-                        <h1>Java已上传文件</h1>
-                    </div>
-                    <ul class="article-list">
-                        <li><a href="#">XXXXX</a></li>
-                    </ul>
-                </div>
-
-                <div class="updated-list">
-                    <div class="top-header clearfix">
-                        <h1>Java已上传文件</h1>
-                    </div>
-                    <ul class="article-list">
-                        <li><a href="#">XXXXX</a></li>
-                    </ul>
-                </div>
-
-                <div class="updated-list">
-                    <div class="top-header clearfix">
-                        <h1>Java已上传文件</h1>
-                    </div>
-                    <ul class="article-list">
-                        <li><a href="#">XXXXX</a></li>
-                    </ul>
-                </div>
---%>
 
             </div>
         </div>
@@ -154,7 +141,6 @@
         let typeId = 1;
         const choose = new Choose_upload($(".post-type"));
         typeId = choose.changeColorandType();
-
         layui.use('upload', function () {
         var $ = layui.jquery
             , upload = layui.upload;
@@ -207,6 +193,11 @@
                         , tds = tr.children();
                     tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
                     tds.eq(3).html(''); //清空操作
+
+
+
+
+
                     return delete this.files[index]; //删除文件队列已经上传成功的文件
                 } else {
                     alert("上传失败")
