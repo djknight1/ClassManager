@@ -1,3 +1,4 @@
+/*
 $(function () {
     "use strict";
     console.log($(".post-type"));
@@ -6,11 +7,11 @@ $(function () {
                     <div class="top-header clearfix">
                         <h1>${$(this).html()}当前任务</h1>
                     </div>
-                    <ul class="article-list">
+                    <ul class="task-list">
                         <li><a href="#">XXXXX</a></li>
                     </ul>
                 </div>
 `
         $(".right-bar-container").append(str);
     })
-});
+});*/

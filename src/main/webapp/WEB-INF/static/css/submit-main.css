@@ -22,6 +22,25 @@ clearfix{ *zoom:1}
 .layui-elem-field legend{
     margin-left: 0;
 }
+
+
+.upload-component-container{
+    margin-top:60px;
+}
+
+.uploaded-task-container legend,
+.upload-component-container legend {
+    border-bottom: 0;
+    width:auto;
+    margin:0 auto;
+}
+.upload-component-container .layui-upload-drag {
+    margin: 0 auto;
+    display: block;
+    width: 80%;
+    height: 150px;
+}
+
 .main-container{
     max-width:1200px ;
     border: 1px solid #e9e9e9;
@@ -92,10 +111,10 @@ clearfix{ *zoom:1}
 }
 #slide-right-bar .user-info{
     margin-top: 0;
-    margin-bottom: 0;
-    padding: 12px 0 11px;
+    padding: 12px;
     width: 100%;
     border-bottom:1px solid #e6e6e6;
+    height:73px;
 }
 /*ctrl+r替换*/
 
@@ -117,9 +136,8 @@ clearfix{ *zoom:1}
 }
 #slide-right-bar .user-info .user-status span{
     vertical-align: top;
-    color: #c2c2c2;
-    font-size: 18px;
-    margin-left:10px;
+    color: #000;
+    font-size: 14px;
 }
 
 .user-class{
@@ -181,4 +199,12 @@ clearfix{ *zoom:1}
     line-height: 22px;
     max-width: 260px;
     color: #757a7e;
+}
+
+li.end-time{
+    color: #94b9dc;
+}
+
+.edit-container .uploaded-task-container{
+    margin-top: 50px;
 }

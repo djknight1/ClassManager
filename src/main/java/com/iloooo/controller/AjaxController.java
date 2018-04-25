@@ -123,8 +123,9 @@ public class AjaxController {
         User user = (User) session.getAttribute("loginUser");
         List<Type> types = typeService.getTypeAll();
         List<Task> tasks = uploadService.getTaskNow();
-        Class userClass = classService.getClassById(user.getId());
+        Class userClass = classService.getClassById(user.getClassId());
         List<Homework> homeworks = homeworkService.getHomeworkListByUserId(user.getId());
+        user.setPassword(null);
         map.put("user", user);
         map.put("userClass",userClass);
         map.put("types", types);
