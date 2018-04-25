@@ -74,7 +74,7 @@
                                 <th>操作</th>
                             </tr>
                             </thead>
-                            <tbody id="demoList1"></tbody>
+                            <tbody id="demoList"></tbody>
                         </table>
                     </div>
                     <button type="button" class="layui-btn" id="testListAction">开始上传</button>
@@ -94,7 +94,7 @@
                         <th>上传时间</th>
                     </tr>
                     </thead>
-                    <tbody id="demoList"></tbody>
+                    <tbody id="demoList1"></tbody>
                 </table>
 
             </div>
