@@ -8,14 +8,5 @@ import com.iloooo.entity.Type;
 import java.util.List;
 
 public interface DownloadService {
-    List<Task> getTaskNow();
-
-    List<Homework> getHomewordByTaskId(long taskId);
-
-    List<Class> getClassAll();
-
-    List<Type> getTypeAll();
-
-    List<Task> getTaskByTypeId(long typeId);
 
 }

@@ -7,9 +7,8 @@ import java.util.List;
 
 public interface LoginService {
 
-    User getUserById(long id);
 
-    List<User> selectByClassId(int classId);
+
 
     boolean createUser(User user);
 
@@ -17,5 +16,4 @@ public interface LoginService {
 
     boolean isCorrectUser(long id, String password);
 
-    boolean updateUser(User user);
 }
