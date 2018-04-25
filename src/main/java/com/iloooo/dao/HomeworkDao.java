@@ -21,6 +21,6 @@ public interface HomeworkDao {
     @Select("select * from homework where userId=#{userId} and taskId = #{taskId}")
     Homework selectByUserIdAndTaskId(@Param("userId") long userId,@Param("taskId") long taskId);
     @Select("select * from homework")
-    List<Homework> selectAllHomework();
+    List<Homework> selectHomeworkAll();
 
 }
