@@ -1,9 +1,7 @@
 package com.iloooo.dao;
 
 import com.iloooo.entity.Task;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 @Mapper
@@ -22,4 +20,10 @@ public interface TaskDao {
 
     @Select("select * from task where typeId = #{typeId}")
     List<Task> selectTaskByTypeId(long typeId);
+
+    @Update("update task set typeId=#{task.typeId},name=#{task.name}, formatName=#{task.formatName}, endTime=#{task.endTime}, flag=#{task.flag}, taskPath=#{task.taskPath} where id=#{id}")
+    boolean updateTask(Task task);
+
+    @Delete("delete from task where id=#{id}")
+    boolean deleteTaskById(long id);
 }

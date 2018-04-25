@@ -34,7 +34,7 @@
             <div class="search-inco"></div>
         </form>
         <div class="nav navbar-nav navbar-right">
-            <li><a href="/login">退出登录</a></li>
+            <li><a href="/exit">退出登录</a></li>
             <li><a href="/admin">后台</a></li>
         </div>
     </div>

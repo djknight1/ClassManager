@@ -1,6 +1,7 @@
 package com.iloooo.controller;
 
 
+import com.iloooo.entity.User;
 import com.iloooo.service.impl.LoginServiceImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,15 @@ public class LoginController {
             return "redirect:/admin";
         }
     }
+
+    @RequestMapping("/exit")
+    public String exit(HttpSession session) {
+        User user = (User) session.getAttribute("loginUser");
+        if (null != user) {
+            session.removeAttribute("loginUser");
+        }
+        return "redirect:/";
+    }
+
 
 }
