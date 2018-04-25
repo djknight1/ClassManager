@@ -16,4 +16,6 @@ public interface UserService {
 
     List<User> getUserByClassId(long classId);
 
+    List<User> getUserAll();
+
 }

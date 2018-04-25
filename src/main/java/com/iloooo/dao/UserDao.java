@@ -12,7 +12,7 @@ public interface UserDao {
     User selectById(@Param("id") long id);
 
     @Select("select * from user where classId = #{classId}")
-    List<User> selectByClassId(int classId);
+    List<User> selectByClassId(long classId);
 
     @Insert("insert into user(id,classId,password,name) values(#{id},#{classId},#{password},#{name})")
     boolean insertUser(User user);
@@ -22,4 +22,7 @@ public interface UserDao {
 
     @Delete("delete from user where id=#{id}")
     boolean deleteUserById(long id);
+
+    @Select("select * from user")
+    List<User> selectAll();
 }
