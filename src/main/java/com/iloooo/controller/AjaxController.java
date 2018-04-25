@@ -78,6 +78,9 @@ public class AjaxController {
                                           @RequestParam(value = "params", required = false) String params,
                                           MultipartHttpServletRequest request) {
         Map<String, Object> msg = new HashMap<String, Object>();
+        System.out.println(file);
+        System.out.println(file.getOriginalFilename());
+
         long typeId = Long.valueOf(params);
         Task task = uploadService.getTaskByTypeId(typeId);
         String serverPath = request.getServletContext().getRealPath("/");
