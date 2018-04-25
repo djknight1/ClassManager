@@ -30,7 +30,6 @@ $(function () {
            if(new_val!==undefined){
                val= new_val;
            }
-           console.log("val",val);
         /*如果不是必填项且用户未填写任何内容直接判定合法*/
            if(!rule.nullable && !val) return true;
 
@@ -58,13 +57,11 @@ $(function () {
 
         this.validate_max_length = function () {
             pre_max_length_min_length();/*他可能输了数字*/
-            console.log(val.length);
             return val.length<=rule.max_length;
         };
 
         this.validate_min_length = function () {
             pre_max_length_min_length();/*他可能输了数字*/
-            console.log(val.length>=rule.min_length);
             return val.length>=rule.min_length;
         };
 

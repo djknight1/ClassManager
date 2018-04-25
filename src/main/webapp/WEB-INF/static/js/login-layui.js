@@ -3,7 +3,6 @@ layui.use('element', function(){
 
     //一些事件监听
     element.on('tab(demo)', function(data){
-        console.log(data);
     });
 });
 

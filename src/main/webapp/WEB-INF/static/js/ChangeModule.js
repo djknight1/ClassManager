@@ -24,7 +24,6 @@ $(function () {
         }
 
         this.changeColorandType = function() {
-            console.log($ele);
             $ele.each(function () {
                 $(this).click(function () {
                     $ele.each(function () {
@@ -34,7 +33,6 @@ $(function () {
                     $(this).css("background-color", "#c92027");
                     $(this).css("color", "#fff");
                     typeId = $(this).attr('data-flag');
-                    console.log(typeId);
                 })
         })
             return typeId;

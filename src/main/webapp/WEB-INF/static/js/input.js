@@ -35,9 +35,7 @@ $(function () {
             $ele.on('blur', function () {
                 /*   me.validator.is_valid();这样写传的VAL还是初始化的val*/
                 /*所以要传实时变化的值,直接传到is_valid里面去就行*/
-                console.log(me.get_val());
                 var is_validate = me.validator.is_valid(me.get_val());
-                console.log(is_validate);
                 if(is_validate){
                     $(".login-button-container .layui-btn-normal").css("background-color", "#1E9FFF");
                     ele_error.hide(); /*这样写会对介绍有bug 当把intro从有到无删除的时候 val不能改变*/
@@ -96,7 +94,6 @@ $(function () {
                 /*加了的话是数字就会解析出数字,是字符串就会解析出字符串*/
                 rule[item_arr[0]] = JSON.parse(item_arr[1]);/*{min:18}*/
             }
-            console.log(rule);
         }
 
         init(); /*直接调用init 指向window*/

@@ -12,7 +12,6 @@ $(function () {
        /*解析input的rule内容*/
         inputs.push(new Input($(node))); /*把实例化的对象传到inputs里面去*/
   });
-    console.log(inputs);
 
     /*避免提交后整页刷新*/
     $form.on("submit",function (e) {

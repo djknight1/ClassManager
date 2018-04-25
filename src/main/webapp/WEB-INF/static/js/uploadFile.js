@@ -7,15 +7,9 @@ $(function () {
 
     $(".post-type").each(function () {
         $(this).click(function () {
-            console.log($(this));
             typeId = $(this).attr('data-flag');
-            console.log(typeId);
         })
     });
-
-
-
-
     layui.use('upload', function () {
         var $ = layui.jquery
             , upload = layui.upload;
@@ -27,7 +21,6 @@ $(function () {
             , multiple: true
             , before: function (obj) {
                 this.data.params = typeId;
-                console.log(this.data.params);
             }
             , drag: true
             , auto: false

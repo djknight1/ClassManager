@@ -19,12 +19,12 @@
         <div class="navbar-header clearfix">
             <a href="#" class="navbar-brand"><img src="/img/logo.png"></a>
         </div>
-        <div class="nav navbar-nav">
+        <div class="nav navbar-nav not-ok">
             <li><a href="/">首页</a></li>
             <li><a href="/knowledge">作业</a></li>
             <li><a href="/school">综测</a></li>
         </div>
-        <form class="navbar-form navbar-left">
+        <form class="navbar-form navbar-left not-ok">
             <div class="serachTags">
                 <a href="#">你想搜啥子</a>
             </div>
@@ -35,7 +35,7 @@
         </form>
         <div class="nav navbar-nav navbar-right">
             <li><a href="/exit">退出登录</a></li>
-            <li><a href="/admin">后台</a></li>
+            <li class="not-ok"><a href="/admin">后台</a></li>
         </div>
     </div>
 </div>
@@ -83,7 +83,7 @@
 
             <div class="uploaded-task-container">
                 <fieldset class="layui-elem-field layui-field-title">
-                    <legend>已上传文件</legend>
+                    <legend>已上传文件(程序员已卒,该功能尚未开发)</legend>
                 </fieldset>
 
                 <table class="layui-table">
@@ -131,8 +131,15 @@
 <script src="${pageContext.request.contextPath}/js/set_pageInfo.js"></script>
 <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
 <script src="${pageContext.request.contextPath}/js/ChangeModule.js"></script>
-<script src="${pageContext.request.contextPath}/js/submit-main.js"></script>
 <script src="${pageContext.request.contextPath}/js/ChangeModule.js"></script>
 <script src="${pageContext.request.contextPath}/js/uploadFile.js"></script>
+<script>
+    $(function () {
+        $(".not-ok a").click(function (event) {
+            event.preventDefault();
+            alert("该功能未开放 sorry啊")
+        })
+    })
+</script>
 </body>
 </html>
