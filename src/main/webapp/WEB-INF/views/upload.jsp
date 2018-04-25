@@ -46,10 +46,7 @@
             <div class="list-group">
                 <div class="list-group-item list-group-title">上传内容</div>
                 <div class="post-group">
-                <c:forEach items="${types}" var="type">
-                    <a class="post-type list-group list-group-item upload" id="type${type.id}"
-                       data-flag="${type.id}">${type.subject}</a>
-                </c:forEach>
+
                 </div>
             </div>
         </div>
@@ -131,6 +128,7 @@
 
 
 <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
+<script src="${pageContext.request.contextPath}/js/AskRequest.js"></script>
 <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
 <script src="${pageContext.request.contextPath}/js/ChangeModule.js"></script>
 <script src="${pageContext.request.contextPath}/js/submit-main.js"></script>
@@ -138,9 +136,18 @@
 
 <script>
     $(function () {
+
         let typeId = 1;
         const choose = new Choose_upload($(".post-type"));
-        typeId = choose.changeColorandType();
+        choose.changeColorandType()
+        $(".post-type").each(function () {
+            $(this).click(function () {
+                console.log($(this));
+                typeId = $(this).attr('data-flag');
+                console.log(typeId);
+            })
+        })
+
         layui.use('upload', function () {
         var $ = layui.jquery
             , upload = layui.upload;
