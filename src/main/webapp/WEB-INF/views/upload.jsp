@@ -74,7 +74,7 @@
                                 <th>操作</th>
                             </tr>
                             </thead>
-                            <tbody id="demoList"></tbody>
+                            <tbody id="demoList1"></tbody>
                         </table>
                     </div>
                     <button type="button" class="layui-btn" id="testListAction">开始上传</button>
@@ -83,7 +83,7 @@
 
             <div class="uploaded-task-container">
                 <fieldset class="layui-elem-field layui-field-title">
-                    <legend>已上传文件(程序员已卒,该功能尚未开发)</legend>
+                    <legend>已上传文件(朱登杰说他改天做)</legend>
                 </fieldset>
 
                 <table class="layui-table">

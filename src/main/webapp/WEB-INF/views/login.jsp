@@ -49,6 +49,8 @@
     <footer class="footer-main">
         <div class="footer-line footer-line1">
             <div><strong style="font-size: 15px">Powered by 罗锋 朱登杰 林昊 平叶超</strong></div>
+            <div><strong style="font-size: 15px">Email：1@iloooo.com</strong></div>
+            <div><strong style="font-size: 15px">网站备案号:浙ICP备17030039号-2</strong></div>
             <%--<div><strong style="font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算机162 朱登杰 </strong></div>--%>
         </div>
     </footer>

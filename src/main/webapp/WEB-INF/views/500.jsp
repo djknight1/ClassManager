@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/error-main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/initcss.css">
 </head>
 <body>
     <div id="progress"></div>
@@ -24,6 +25,6 @@
         </div>
     </div>
     <script src="${pageContext.request.contextPath}/js/error-main.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jumpSpan"></script>
+    <script src="${pageContext.request.contextPath}/js/jumpSpan.js"></script>
 </body>
 </html>
