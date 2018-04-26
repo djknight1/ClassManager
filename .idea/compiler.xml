@@ -9,5 +9,8 @@
         <module name="ClassManager" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ClassManager" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

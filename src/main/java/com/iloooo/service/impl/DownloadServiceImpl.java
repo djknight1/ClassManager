@@ -12,7 +12,14 @@ import com.iloooo.service.DownloadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.ZipOutputStream;
+
+import static com.iloooo.utils.DownloadUtils.zipFile;
 
 @Service("downloadServiceImpl")
 public class DownloadServiceImpl implements DownloadService {
@@ -53,5 +60,43 @@ public class DownloadServiceImpl implements DownloadService {
     public List<Task> getTaskByTypeId(long typeId) {
         return taskDao.selectTaskByTypeId(typeId);
     }
+
+//    @Override
+//    public void downloadAll(String path, String taskName){
+//        System.out.println("download");
+//        List<File> files = new ArrayList<File>();
+//        File allfile = new File(path);
+//        if (allfile.exists()){
+//            File[] fileArr = allfile.listFiles();
+//            for (File file2 : fileArr){
+//                files.add(file2);
+//            }
+//        }
+//
+//        String fileName = taskName + ".zip";
+//        String outFilePath = "F://";
+//        File fileZip = new File(outFilePath + fileName);//临时文件
+//
+//        FileOutputStream outputStream = null;
+//        ZipOutputStream zipOutputStream = null;
+//        try{
+//            outputStream = new FileOutputStream(fileZip);
+//            zipOutputStream = new ZipOutputStream(outputStream);
+//        }catch (FileNotFoundException e){
+//            e.printStackTrace();
+//            System.out.println("临时压缩包异常");
+//        }
+//
+//        try{
+//            zipFile(files, zipOutputStream);
+//            zipOutputStream.close();
+//            outputStream.close();
+//            //this.downloadFile(fileZip, response,true);
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }catch (ServletException e){
+//            e.printStackTrace();;
+//        }
+//    }
 
 }
