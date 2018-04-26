@@ -43,8 +43,8 @@ public class UploadServiceImpl implements UploadService {
         Task task = taskDao.selectByTaskId(taskId);
         boolean methodFlag = false;
         String filename = file.getOriginalFilename();
-        String homeworkName = user.getId() + " " + user.getName() + "_" + task.getFormatName() + filename.substring(filename.lastIndexOf("."));;
-        String path = CONSTANTS.FILE_PATH_PREFIX + task.getTaskPath() + "/" + homeworkName;
+        String homeworkName = user.getId() + " " + user.getName() + "_" + task.getFormatName() + filename.substring(filename.lastIndexOf("."));
+        String path = CONSTANTS.FILE_PATH_PREFIX + task.getTaskPath() + "/" + user.getClassId()+"/"+homeworkName;
         String fullPath = serverPath + path;
         String prefix = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
         File fileDir=new File(prefix);

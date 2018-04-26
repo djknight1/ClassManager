@@ -33,7 +33,7 @@ public class UploadController {
     }
 
     @RequestMapping("")
-    public String submit(HttpServletRequest request, HttpSession session, Model model) {
+    public String submit(HttpServletRequest request, HttpSession session) {
         List<Type> types = typeService.getTypeAll();
         if (null == (User) session.getAttribute("loginUser")) {
             return "redirect:/";
