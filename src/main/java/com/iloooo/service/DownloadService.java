@@ -11,15 +11,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface DownloadService {
-    List<Task> getTaskNow();
-
-    List<Homework> getHomewordByTaskId(long taskId);
-
-    List<Class> getClassAll();
-
-    List<Type> getTypeAll();
-
-    List<Task> getTaskByTypeId(long typeId);
 
 //    void downloadAll(String path, String taskName) throws IOException, ServletException;
 

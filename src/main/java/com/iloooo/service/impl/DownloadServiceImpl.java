@@ -36,30 +36,6 @@ public class DownloadServiceImpl implements DownloadService {
         this.typeDao = typeDao;
     }
 
-    @Override
-    public List<Task> getTaskNow() {
-        return taskDao.selectTaskNow();
-    }
-
-    @Override
-    public List<Homework> getHomewordByTaskId(long taskId) {
-        return homeworkDao.selectByTaskId(taskId);
-    }
-
-    @Override
-    public List<Class> getClassAll() {
-        return classDao.selectClassAll();
-    }
-
-    @Override
-    public List<Type> getTypeAll() {
-        return typeDao.selectTypeAll();
-    }
-
-    @Override
-    public List<Task> getTaskByTypeId(long typeId) {
-        return taskDao.selectTaskByTypeId(typeId);
-    }
 
 //    @Override
 //    public void downloadAll(String path, String taskName){

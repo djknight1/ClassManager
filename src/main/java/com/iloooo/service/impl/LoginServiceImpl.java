@@ -19,11 +19,6 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public User getUserById(long id) {
-        return userDao.selectById(id);
-    }
-
-    @Override
     public boolean createUser(User user) {
         boolean ret;
         if (isIdEmpty(user.getId())) {
@@ -50,15 +45,6 @@ public class LoginServiceImpl implements LoginService {
             ret = false;
         }
         return ret;
-    }
-
-    @Override
-    public boolean updateUser(User user) {
-        return userDao.updateUser(user);
-    }
-
-    public List<User> selectByClassId(int classId){
-        return userDao.selectByClassId(classId);
     }
 
 }

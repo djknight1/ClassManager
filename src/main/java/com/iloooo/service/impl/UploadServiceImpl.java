@@ -36,18 +36,6 @@ public class UploadServiceImpl implements UploadService {
         this.classDao = classDao;
     }
 
-
-    @Override
-    public List<Task> getTaskNow() {
-        return taskDao.selectTaskNow();
-    }
-
-
-    @Override
-    public List<Type> getTypeAll() {
-        return typeDao.selectTypeAll();
-    }
-
     @Override
     public boolean updateHomework(MultipartFile file, long userId, long typeId, long taskId, String serverPath) {
         Homework homework = homeworkDao.selectByUserIdAndTaskId(userId, taskId);
@@ -88,12 +76,6 @@ public class UploadServiceImpl implements UploadService {
 
 
         return true;
-    }
-
-
-    @Override
-    public Task getTaskByTypeId(long typeId ) {
-        return taskDao.selectTaskNowByTypeId(typeId);
     }
 
 }
