@@ -25,15 +25,19 @@ import java.util.Map;
 @Controller
 @RequestMapping("/ajax")
 public class AjaxController {
+    private TaskServiceImpl taskService;
     private LoginServiceImpl loginService;
     private UploadServiceImpl uploadService;
     private AdminServiceImpl adminService;
     private TypeServiceImpl typeService;
     private HomeworkServiceImpl homeworkService;
     private ClassServiceImpl classService;
+    private UserServiceImpl userService;
 
     @Autowired
-    public AjaxController(LoginServiceImpl loginService, UploadServiceImpl uploadService, AdminServiceImpl adminService, TypeServiceImpl typeService, HomeworkServiceImpl homeworkService, ClassServiceImpl classService) {
+    public AjaxController(UserServiceImpl userService, TaskServiceImpl taskService, LoginServiceImpl loginService, UploadServiceImpl uploadService, AdminServiceImpl adminService, TypeServiceImpl typeService, HomeworkServiceImpl homeworkService, ClassServiceImpl classService) {
+        this.userService = userService;
+        this.taskService = taskService;
         this.loginService = loginService;
         this.uploadService = uploadService;
         this.adminService = adminService;
@@ -42,6 +46,9 @@ public class AjaxController {
         this.classService = classService;
     }
 
+
+
+
     //用户登陆
     @RequestMapping(path = "/check", method = RequestMethod.POST)
     @ResponseBody
@@ -49,7 +56,7 @@ public class AjaxController {
         Map<String, Boolean> msg = new HashMap<String, Boolean>();
         if (loginService.isCorrectUser(id, password)) {
             msg.put("msg", true);
-            session.setAttribute("loginUser", loginService.getUserById(id));
+            session.setAttribute("loginUser", userService.getUserById(id));
         } else {
             msg.put("msg", false);
         }
@@ -82,7 +89,7 @@ public class AjaxController {
         System.out.println(file.getOriginalFilename());
 
         long typeId = Long.valueOf(params);
-        Task task = uploadService.getTaskByTypeId(typeId);
+        Task task = taskService.getTaskNowByTypeId(typeId);
         String serverPath = request.getServletContext().getRealPath("/");
         boolean flag = uploadService.updateHomework(file,
                 ((User) request.getSession().getAttribute("loginUser")).getId(), typeId, task.getId(), serverPath);
@@ -108,10 +115,10 @@ public class AjaxController {
     @ResponseBody
     public Map<String, Object> password(@RequestParam("id") Long id, @RequestParam(value = "oldpassword", required = false) String oldPassword, @RequestParam(value = "newpassword", required = false) String newPassword) {
         Map<String, Object> map = new HashMap<>();
-        User user = loginService.getUserById(id);
+        User user = userService.getUserById(id);
         if (null != user && user.getPassword().equals(oldPassword)) {
             user.setPassword(newPassword);
-            loginService.updateUser(user);
+            userService.updateUser(user);
             map.put("msg", true);
         } else {
             map.put("msg", false);
@@ -125,7 +132,7 @@ public class AjaxController {
         Map<String, Object> map = new HashMap<>();
         User user = (User) session.getAttribute("loginUser");
         List<Type> types = typeService.getTypeAll();
-        List<Task> tasks = uploadService.getTaskNow();
+        List<Task> tasks = taskService.getTaskNow();
         Class userClass = classService.getClassById(user.getClassId());
         List<Homework> homeworks = homeworkService.getHomeworkListByUserId(user.getId());
         user.setPassword(null);

@@ -3,6 +3,7 @@ package com.iloooo.controller;
 import com.iloooo.entity.Type;
 import com.iloooo.entity.User;
 import com.iloooo.service.UserService;
+import com.iloooo.service.impl.TypeServiceImpl;
 import com.iloooo.service.impl.UploadServiceImpl;
 import com.iloooo.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,19 +21,20 @@ import java.util.Map;
 @Controller
 @RequestMapping("/upload")
 public class UploadController {
-
+    private TypeServiceImpl typeService;
     private UploadServiceImpl uploadService;
     private UserServiceImpl userService;
 
     @Autowired
-    public UploadController(UploadServiceImpl uploadService, UserServiceImpl userService) {
+    public UploadController(UploadServiceImpl uploadService, UserServiceImpl userService, TypeServiceImpl typeService) {
+        this.typeService = typeService;
         this.uploadService = uploadService;
         this.userService = userService;
     }
 
     @RequestMapping("")
     public String submit(HttpServletRequest request, HttpSession session, Model model) {
-        List<Type> types = uploadService.getTypeAll();
+        List<Type> types = typeService.getTypeAll();
         if (null == (User) session.getAttribute("loginUser")) {
             return "redirect:/";
         } else {

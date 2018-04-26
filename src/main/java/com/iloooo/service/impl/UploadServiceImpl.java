@@ -61,10 +61,8 @@ public class UploadServiceImpl implements UploadService {
         homework.setTypeId(typeId);
         fileDir.mkdirs();
         try {
-
             file.transferTo(localFile);
             System.out.println(localFile);
-
         } catch (IOException e) {
             e.printStackTrace();
             return false;
