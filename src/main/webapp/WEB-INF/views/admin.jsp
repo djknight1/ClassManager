@@ -45,30 +45,33 @@
                 <div class="service-container">
                     <div class="service-section">
                         <div class="section-body">
-                            <div class="select-container layui-form">
+                            <form class="select-container layui-form">
+
                                 <select name="class" class="select-input">
-                                    <option value="0" >请选择班级</option>
-                                    <option value="161">计算机1班</option>
-                                    <option value="162">计算机2班</option>
+                                    <option value="null" >请选择班级</option>
+                                    <option value="1">计算机1班</option>
+                                    <option value="2">计算机2班</option>
                                 </select>
 
                                 <select name="subject" class="select-input">
-                                    <option value="0" >请选择学科</option>
-                                    <option value="c++">c++</option>
-                                    <option value="java">java</option>
+                                    <option value="null" >请选择学科</option>
+                                    <option value="2">c++</option>
+                                    <option value="1">java</option>
                                 </select>
 
                                 <select name="city" class="select-input">
-                                    <option value="0" >请选择上传时间</option>
+                                    <option value="null" >请选择上传时间</option>
                                     <option value="c++">c++</option>
                                     <option value="java">java</option>
                                 </select>
-                                <button class="layui-btn">查询</button>
-                            </div>
+                                <button id="download-all" class="layui-btn">批量下载</button>
+                            </form>
 
 
-                            <table>
-                                <thead>
+                            <table id="demo" class="layui-table">
+
+
+                               <%-- <thead>
                                 <tr>
                                     <th class="title-column-3">学号</th>
                                     <th class="title-column-4">姓名</th>
@@ -83,12 +86,8 @@
                                     <td class="title-column-1">类型</td>
                                     <td><button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal title-column-2">点击下载</button></td>
                                 </tr>
-                                </tbody>
+                                </tbody>--%>
                             </table>
-
-                            <div id="download-all">
-                                <button class="layui-btn layui-btn-radius">批量下载</button>
-                            </div>
                         </div>
                     </div>
 
@@ -100,14 +99,25 @@
     <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
     <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
     <script>
+
+    </script>
+    <script src="${pageContext.request.contextPath}/js/download_all.js"></script>
+    <script>
         //JavaScript代码区域
-            layui.use('form', function() {
-                var form = layui.form;
+        $(function () {
+            var $form = $("form");
+            var inputs = [];
+            $form.each(function (index,node) {
+                inputs.push(new Getsearch_condition(node));
             });
-        /* layui.use('element', function(){
+            console.log($form.find("select"));
+
+
+
+         layui.use('element', function(){
                         layui.use('table', function(){
-                            /!*TODO:一定要把这个做的好看点！！！*!/
-                           /!* var table = layui.table;
+                            /*TODO:一定要把这个做的好看点！！！*/
+                            var table = layui.table;
                             //第一个实例
                             table.render({
                                 elem: '#demo',
@@ -117,14 +127,12 @@
                                 cols: [[ //表头
                                     {field: 'id', title: '学号', width:"25%", sort: true, fixed: 'left'},
                                     {field: 'name', title: '姓名', width:"25%", fixed: 'left'},
-                                    {field: 'file', title: '上传文件名', width:"25%", fixed: 'left'},
-                                    {field: 'time', title: '上传时间', sort: true,width:"25%",  fixed: 'left'},
                                 ]],
-                            });*!/
+                            });
                         });
-                });*/
+                });
+        })
     </script>
-    <script src="${pageContext.request.contextPath}/js/admin.js"></script>
 </body>
 </html>
 

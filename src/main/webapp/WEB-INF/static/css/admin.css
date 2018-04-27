@@ -182,10 +182,6 @@ table tbody tr td button {
     float: right;
 }
 
-#download-all{
-    margin-top: 10px;
-}
-
 @media (max-width: 980px) {
     .user-info-container .user-section-wrap:nth-child(3){
         display: none;

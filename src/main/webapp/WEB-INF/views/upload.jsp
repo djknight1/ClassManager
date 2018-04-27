@@ -134,12 +134,12 @@
 <script src="${pageContext.request.contextPath}/js/ChangeModule.js"></script>
 <script src="${pageContext.request.contextPath}/js/uploadFile.js"></script>
 <script>
-    $(function () {
+/*    $(function () {
         $(".not-ok a").click(function (event) {
             event.preventDefault();
             alert("该功能未开放 sorry啊")
         })
-    })
+    })*/
 </script>
 </body>
 </html>
